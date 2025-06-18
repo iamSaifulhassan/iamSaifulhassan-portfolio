@@ -144,14 +144,24 @@ class HeroSection extends StatelessWidget {
               offset: const Offset(0, 10),
             ),
           ],
-        ),
-        child: const CircleAvatar(
-          radius: 150,
-          backgroundImage: AssetImage('assets/images/profile.jpg'),
-          child: Icon(
-            Icons.person,
-            size: 100,
-            color: Colors.white54,
+        ),        child: ClipOval(
+          child: Container(
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppTheme.primaryColor.withOpacity(0.8),
+                  AppTheme.secondaryColor.withOpacity(0.8),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: const Icon(
+              Icons.person,
+              size: 150,
+              color: Colors.white70,            ),
           ),
         ),
       ),
