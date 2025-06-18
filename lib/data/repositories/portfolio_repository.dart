@@ -57,18 +57,18 @@ class PortfolioRepository {
         category: 'Web App',
         githubUrl: 'https://github.com/yourusername/portfolio',
         liveUrl: 'https://yourportfolio.web.app',
-      ),
-    ];
+      ),    ];
   }
 
   // Sample Skills Data
   static List<Skill> getSkills() {
     return [
+      // Frontend & Mobile
       Skill(
         name: 'Flutter',
         iconPath: 'assets/icons/flutter.png',
         proficiency: 0.9,
-        category: 'Framework',
+        category: 'Frontend',
         description: 'Cross-platform mobile development',
       ),
       Skill(
@@ -79,16 +79,57 @@ class PortfolioRepository {
         description: 'Primary programming language for Flutter',
       ),
       Skill(
+        name: 'React Native',
+        iconPath: 'assets/icons/react.png',
+        proficiency: 0.7,
+        category: 'Frontend',
+        description: 'Mobile app development framework',
+      ),
+      
+      // Backend & Database
+      Skill(
         name: 'Firebase',
         iconPath: 'assets/icons/firebase.png',
-        proficiency: 0.8,
+        proficiency: 0.85,
         category: 'Backend',
         description: 'Backend as a Service platform',
       ),
       Skill(
+        name: 'Node.js',
+        iconPath: 'assets/icons/nodejs.png',
+        proficiency: 0.75,
+        category: 'Backend',
+        description: 'Server-side JavaScript runtime',
+      ),
+      Skill(
+        name: 'MongoDB',
+        iconPath: 'assets/icons/mongodb.png',
+        proficiency: 0.7,
+        category: 'Database',
+        description: 'NoSQL database system',
+      ),
+      
+      // Languages
+      Skill(
+        name: 'JavaScript',
+        iconPath: 'assets/icons/javascript.png',
+        proficiency: 0.8,
+        category: 'Language',
+        description: 'Web development programming language',
+      ),
+      Skill(
+        name: 'Python',
+        iconPath: 'assets/icons/python.png',
+        proficiency: 0.6,
+        category: 'Language',
+        description: 'General-purpose programming language',
+      ),
+      
+      // Tools & Others
+      Skill(
         name: 'Git',
         iconPath: 'assets/icons/git.png',
-        proficiency: 0.8,
+        proficiency: 0.85,
         category: 'Tool',
         description: 'Version control system',
       ),
@@ -102,9 +143,16 @@ class PortfolioRepository {
       Skill(
         name: 'UI/UX Design',
         iconPath: 'assets/icons/design.png',
-        proficiency: 0.7,
+        proficiency: 0.75,
         category: 'Design',
         description: 'User interface and experience design',
+      ),
+      Skill(
+        name: 'AWS',
+        iconPath: 'assets/icons/aws.png',
+        proficiency: 0.6,
+        category: 'Cloud',
+        description: 'Amazon Web Services cloud platform',
       ),
     ];
   }
