@@ -88,14 +88,13 @@ class AppTheme {
         fontWeight: FontWeight.w600,
         color: textPrimary,
       );
-
-  static TextStyle get bodyStyle => GoogleFonts.poppins(
+  static TextStyle get bodyStyle => GoogleFonts.outfit(
         fontSize: 16,
         color: textSecondary,
         height: 1.6,
       );
 
-  static TextStyle get captionStyle => GoogleFonts.poppins(
+  static TextStyle get captionStyle => GoogleFonts.outfit(
         fontSize: 14,
         color: textHint,
       );
