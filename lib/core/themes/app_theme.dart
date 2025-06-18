@@ -49,7 +49,8 @@ class AppTheme {
       brightness: Brightness.dark,
       primaryColor: primaryColor,
       scaffoldBackgroundColor: backgroundColor,
-      cardColor: cardColor,      textTheme: GoogleFonts.outfitTextTheme().apply(
+      cardColor: cardColor,
+      textTheme: GoogleFonts.outfitTextTheme().apply(
         bodyColor: textPrimary,
         displayColor: textPrimary,
       ),
@@ -76,6 +77,7 @@ class AppTheme {
       ),
     );
   }
+
   // Text Styles
   static TextStyle get headingStyle => GoogleFonts.outfit(
         fontSize: 48,
