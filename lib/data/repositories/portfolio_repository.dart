@@ -48,8 +48,7 @@ class PortfolioRepository {
         technologies: ['Flutter', 'Firebase', 'Socket.io', 'Encryption'],
         category: 'Mobile App',
         githubUrl: 'https://github.com/yourusername/chat-app',
-      ),
-      Project(
+      ),      Project(
         title: 'Portfolio Website',
         description:
             'A responsive portfolio website built with Flutter Web showcasing projects and skills.',
@@ -57,7 +56,24 @@ class PortfolioRepository {
         category: 'Web App',
         githubUrl: 'https://github.com/yourusername/portfolio',
         liveUrl: 'https://yourportfolio.web.app',
-      ),    ];
+      ),
+      Project(
+        title: 'Social Media App',
+        description:
+            'Instagram-like social media app with photo sharing, stories, and real-time feed updates.',
+        technologies: ['Flutter', 'Firebase', 'Cloud Storage', 'Push Notifications'],
+        category: 'Mobile App',
+        isFeatured: true,
+        githubUrl: 'https://github.com/yourusername/social-app',
+      ),
+      Project(
+        title: 'Expense Tracker',
+        description:
+            'Personal finance management app with budget tracking, expense categorization, and financial insights.',
+        technologies: ['Flutter', 'SQLite', 'Charts', 'Biometric Auth'],
+        category: 'Mobile App',
+        githubUrl: 'https://github.com/yourusername/expense-tracker',
+      ),];
   }
 
   // Sample Skills Data
