@@ -42,19 +42,20 @@ class PortfolioRepository {
         githubUrl: 'https://github.com/yourusername/weather-app',
       ),
       Project(
-        title: 'Chat Application',
+        title: 'Book Reading App',
         description:
-            'Real-time messaging app with end-to-end encryption, media sharing, and group chat functionality.',
-        technologies: ['Flutter', 'Firebase', 'Socket.io', 'Encryption'],
+            'A mobile application for book lovers to discover, read, and share their favorite books.',
+        technologies: ['Flutter', 'Firebase', 'Provider', 'Google Books API'],
         category: 'Mobile App',
-        githubUrl: 'https://github.com/yourusername/chat-app',
-      ),      Project(
+        githubUrl: 'https://github.com/iamsaifulhassan/book-reading-app',
+      ),
+      Project(
         title: 'Portfolio Website',
         description:
             'A responsive portfolio website built with Flutter Web showcasing projects and skills.',
         technologies: ['Flutter Web', 'Responsive Design', 'Animations'],
         category: 'Web App',
-        githubUrl: 'https://github.com/yourusername/portfolio',
+        githubUrl: 'https://github.com/iamsaifulhassan/iamsaifulhassan_portfolio',
         liveUrl: 'https://yourportfolio.web.app',
       ),
       Project(
@@ -72,14 +73,14 @@ class PortfolioRepository {
             'Personal finance management app with budget tracking, expense categorization, and financial insights.',
         technologies: ['Flutter', 'SQLite', 'Charts', 'Biometric Auth'],
         category: 'Mobile App',
-        githubUrl: 'https://github.com/yourusername/expense-tracker',
-      ),];
+        githubUrl: 'https://github.com/yourusername/expense-tracker',      ),
+    ];
   }
 
   // Sample Skills Data
   static List<Skill> getSkills() {
     return [
-      // Frontend & Mobile
+      // Frontend & Mobile (from your screenshots)
       Skill(
         name: 'Flutter',
         iconPath: 'assets/icons/flutter.png',
@@ -95,15 +96,6 @@ class PortfolioRepository {
         description: 'Primary programming language for Flutter',
       ),
       Skill(
-        name: 'React Native',
-        iconPath: 'assets/icons/react.png',
-        proficiency: 0.7,
-        category: 'Frontend',
-        description: 'Mobile app development framework',
-      ),
-      
-      // Backend & Database
-      Skill(
         name: 'Firebase',
         iconPath: 'assets/icons/firebase.png',
         proficiency: 0.85,
@@ -111,37 +103,37 @@ class PortfolioRepository {
         description: 'Backend as a Service platform',
       ),
       Skill(
-        name: 'Node.js',
-        iconPath: 'assets/icons/nodejs.png',
-        proficiency: 0.75,
-        category: 'Backend',
-        description: 'Server-side JavaScript runtime',
-      ),
-      Skill(
-        name: 'MongoDB',
-        iconPath: 'assets/icons/mongodb.png',
-        proficiency: 0.7,
-        category: 'Database',
-        description: 'NoSQL database system',
-      ),
-      
-      // Languages
-      Skill(
-        name: 'JavaScript',
-        iconPath: 'assets/icons/javascript.png',
+        name: 'Bloc',
+        iconPath: 'assets/icons/bloc.png',
         proficiency: 0.8,
-        category: 'Language',
-        description: 'Web development programming language',
-      ),
-      Skill(
-        name: 'Python',
-        iconPath: 'assets/icons/python.png',
-        proficiency: 0.6,
-        category: 'Language',
-        description: 'General-purpose programming language',
+        category: 'Frontend',
+        description: 'State management for Flutter',
       ),
       
-      // Tools & Others
+      // Backend & Languages
+      Skill(
+        name: 'Java',
+        iconPath: 'assets/icons/java.png',
+        proficiency: 0.75,
+        category: 'Language',
+        description: 'Object-oriented programming language',
+      ),
+      Skill(
+        name: 'Laravel',
+        iconPath: 'assets/icons/laravel.png',
+        proficiency: 0.7,
+        category: 'Backend',
+        description: 'PHP web application framework',
+      ),
+      Skill(
+        name: 'SQL',
+        iconPath: 'assets/icons/sql.png',
+        proficiency: 0.8,
+        category: 'Database',
+        description: 'Database query language',
+      ),
+      
+      // Tools & Design
       Skill(
         name: 'Git',
         iconPath: 'assets/icons/git.png',
@@ -150,11 +142,18 @@ class PortfolioRepository {
         description: 'Version control system',
       ),
       Skill(
-        name: 'REST API',
-        iconPath: 'assets/icons/api.png',
-        proficiency: 0.85,
-        category: 'Backend',
-        description: 'API integration and development',
+        name: 'Figma',
+        iconPath: 'assets/icons/figma.png',
+        proficiency: 0.75,
+        category: 'Design',
+        description: 'UI/UX design and prototyping',
+      ),
+      Skill(
+        name: 'Prototyping',
+        iconPath: 'assets/icons/prototype.png',
+        proficiency: 0.7,
+        category: 'Design',
+        description: 'Creating interactive prototypes',
       ),
       Skill(
         name: 'UI/UX Design',
@@ -163,12 +162,30 @@ class PortfolioRepository {
         category: 'Design',
         description: 'User interface and experience design',
       ),
+      
+      // Development Tools
       Skill(
-        name: 'AWS',
-        iconPath: 'assets/icons/aws.png',
-        proficiency: 0.6,
-        category: 'Cloud',
-        description: 'Amazon Web Services cloud platform',
+        name: 'Android Studio',
+        iconPath: 'assets/icons/android_studio.png',
+        proficiency: 0.8,
+        category: 'Tool',
+        description: 'Android development IDE',
+      ),
+      Skill(
+        name: 'VS Code',
+        iconPath: 'assets/icons/vscode.png',
+        proficiency: 0.9,
+        category: 'Tool',
+        description: 'Code editor and IDE',
+      ),
+      
+      // APIs
+      Skill(
+        name: 'REST APIs',
+        iconPath: 'assets/icons/api.png',
+        proficiency: 0.85,
+        category: 'Backend',
+        description: 'API integration and development',
       ),
     ];
   }

@@ -127,41 +127,57 @@ class HeroSection extends StatelessWidget {
       ],
     );
   }
-
   Widget _buildImageContent() {
     return FadeInRight(
       duration: const Duration(milliseconds: 1000),
       child: Container(
-        width: 300,
-        height: 300,
+        width: 320,
+        height: 320,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: Colors.white, width: 4),
+          gradient: AppTheme.primaryGradient,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.3),
-              blurRadius: 20,
-              offset: const Offset(0, 10),
+              color: AppTheme.primaryColor.withOpacity(0.3),
+              blurRadius: 30,
+              offset: const Offset(0, 15),
             ),
           ],
-        ),        child: ClipOval(
-          child: Container(
-            width: 300,
-            height: 300,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  AppTheme.primaryColor.withOpacity(0.8),
-                  AppTheme.secondaryColor.withOpacity(0.8),
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: ClipOval(
+            child: Container(
+              width: 310,
+              height: 310,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+              ),
+              child: Image.asset(
+                'assets/images/profile.jpg',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          AppTheme.primaryColor.withOpacity(0.8),
+                          AppTheme.secondaryColor.withOpacity(0.8),
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      size: 150,
+                      color: Colors.white70,
+                    ),
+                  );
+                },
               ),
             ),
-            child: const Icon(
-              Icons.person,
-              size: 150,
-              color: Colors.white70,            ),
           ),
         ),
       ),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AppTheme {
-  // Colors
-  static const Color primaryColor = Color(0xFF6C63FF);
-  static const Color secondaryColor = Color(0xFF4CAF50);
-  static const Color accentColor = Color(0xFFFF6B6B);
+class AppTheme {  // Colors (inspired by your design)
+  static const Color primaryColor = Color(0xFF00BCD4); // Teal/Cyan
+  static const Color secondaryColor = Color(0xFF26C6DA); // Light Cyan
+  static const Color accentColor = Color(0xFF00ACC1); // Dark Cyan
   static const Color backgroundColor = Color(0xFF0A0E27);
   static const Color surfaceColor = Color(0xFF1E2749);
   static const Color cardColor = Color(0xFF252B48);
@@ -13,9 +12,9 @@ class AppTheme {
   static const Color textSecondary = Color(0xFFB0BEC5);
   static const Color textHint = Color(0xFF78849E);
 
-  // Gradients
+  // Gradients (matching your design)
   static const LinearGradient primaryGradient = LinearGradient(
-    colors: [primaryColor, Color(0xFF9C27B0)],
+    colors: [primaryColor, secondaryColor],
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
