@@ -127,6 +127,7 @@ class HeroSection extends StatelessWidget {
       ],
     );
   }
+
   Widget _buildImageContent() {
     return FadeInRight(
       duration: const Duration(milliseconds: 1000),

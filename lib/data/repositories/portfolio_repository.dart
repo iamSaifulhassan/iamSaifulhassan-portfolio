@@ -5,76 +5,55 @@ import '../models/education.dart';
 
 class PortfolioRepository {
   // Sample Projects Data
-  static List<Project> getProjects() {
-    return [
+  static List<Project> getProjects() {    return [
       Project(
-        title: 'E-Commerce Mobile App',
+        title: 'Flutter E-Commerce App',
         description:
-            'A complete e-commerce mobile application built with Flutter, featuring user authentication, product catalog, shopping cart, and payment integration.',
-        technologies: ['Flutter', 'Dart', 'Firebase', 'Stripe API', 'Provider'],
+            'A complete e-commerce mobile application with user authentication, product catalog, cart, and payment integration.',
+        technologies: ['Flutter', 'Dart', 'Firebase', 'Provider', 'Stripe'],
         category: 'Mobile App',
         isFeatured: true,
-        githubUrl: 'https://github.com/yourusername/ecommerce-app',
-        liveUrl:
-            'https://play.google.com/store/apps/details?id=com.example.ecommerce',
-      ),
-      Project(
-        title: 'Task Management Dashboard',
-        description:
-            'A responsive web dashboard for task management with real-time updates, team collaboration features, and analytics.',
-        technologies: ['Flutter Web', 'Firebase', 'Chart.js', 'WebSocket'],
-        category: 'Web App',
-        isFeatured: true,
-        githubUrl: 'https://github.com/yourusername/task-dashboard',
-        liveUrl: 'https://task-dashboard-demo.web.app',
-      ),
-      Project(
-        title: 'Weather Forecast App',
-        description:
-            'A beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.',
-        technologies: [
-          'Flutter',
-          'OpenWeather API',
-          'Google Maps',
-          'Bloc Pattern'
-        ],
-        category: 'Mobile App',
-        githubUrl: 'https://github.com/yourusername/weather-app',
+        githubUrl: 'https://github.com/iamsaifulhassan/ecommerce-app',
+        // liveUrl: 'Add your live demo link here',
       ),
       Project(
         title: 'Book Reading App',
         description:
-            'A mobile application for book lovers to discover, read, and share their favorite books.',
-        technologies: ['Flutter', 'Firebase', 'Provider', 'Google Books API'],
+            'A mobile application for book lovers with reading features, bookmarks, and personalized recommendations.',
+        technologies: ['Flutter', 'Dart', 'Firebase', 'PDF Viewer', 'Local Storage'],
         category: 'Mobile App',
-        githubUrl: 'https://github.com/iamsaifulhassan/book-reading-app',
+        isFeatured: true,
+        githubUrl: 'https://github.com/iamsaifulhassan/bookreadapp',
+        // liveUrl: 'Add your live demo link here',
       ),
       Project(
         title: 'Portfolio Website',
         description:
-            'A responsive portfolio website built with Flutter Web showcasing projects and skills.',
-        technologies: ['Flutter Web', 'Responsive Design', 'Animations'],
+            'A responsive portfolio website built with Flutter Web showcasing projects and skills for freelance work.',
+        technologies: ['Flutter Web', 'Dart', 'Responsive Design', 'Animations'],
         category: 'Web App',
-        githubUrl: 'https://github.com/iamsaifulhassan/iamsaifulhassan_portfolio',
-        liveUrl: 'https://yourportfolio.web.app',
-      ),
-      Project(
-        title: 'Social Media App',
-        description:
-            'Instagram-like social media app with photo sharing, stories, and real-time feed updates.',
-        technologies: ['Flutter', 'Firebase', 'Cloud Storage', 'Push Notifications'],
-        category: 'Mobile App',
         isFeatured: true,
-        githubUrl: 'https://github.com/yourusername/social-app',
+        githubUrl: 'https://github.com/iamsaifulhassan/iamsaifulhassan_portfolio',
+        // liveUrl: 'Add your live demo link here',
       ),
       Project(
-        title: 'Expense Tracker',
+        title: 'Task Management App',
         description:
-            'Personal finance management app with budget tracking, expense categorization, and financial insights.',
-        technologies: ['Flutter', 'SQLite', 'Charts', 'Biometric Auth'],
+            'A productivity app for managing daily tasks with categories, reminders, and progress tracking.',
+        technologies: ['Flutter', 'Dart', 'SQLite', 'Local Notifications', 'Provider'],
         category: 'Mobile App',
-        githubUrl: 'https://github.com/yourusername/expense-tracker',      ),
-    ];
+        githubUrl: 'https://github.com/iamsaifulhassan/task-manager',
+        // liveUrl: 'Add your live demo link here',
+      ),
+      Project(
+        title: 'Weather Forecast App',
+        description:
+            'A beautiful weather application with location-based forecasts, weather maps, and detailed analytics.',
+        technologies: ['Flutter', 'Dart', 'REST API', 'Geolocation', 'Charts'],
+        category: 'Mobile App',
+        githubUrl: 'https://github.com/iamsaifulhassan/weather-app',
+        // liveUrl: 'Add your live demo link here',
+      ),    ];
   }
 
   // Sample Skills Data
@@ -84,29 +63,29 @@ class PortfolioRepository {
       Skill(
         name: 'Flutter',
         iconPath: 'assets/icons/flutter.png',
-        proficiency: 0.9,
+        proficiency: 1.0, // Will not be displayed
         category: 'Frontend',
         description: 'Cross-platform mobile development',
       ),
       Skill(
         name: 'Dart',
         iconPath: 'assets/icons/dart.png',
-        proficiency: 0.9,
+        proficiency: 1.0,
         category: 'Language',
         description: 'Primary programming language for Flutter',
       ),
       Skill(
         name: 'Firebase',
         iconPath: 'assets/icons/firebase.png',
-        proficiency: 0.85,
+        proficiency: 1.0,
         category: 'Backend',
         description: 'Backend as a Service platform',
       ),
       Skill(
         name: 'Bloc',
         iconPath: 'assets/icons/bloc.png',
-        proficiency: 0.8,
-        category: 'Frontend',
+        proficiency: 1.0,
+        category: 'State Management',
         description: 'State management for Flutter',
       ),
       
@@ -114,21 +93,21 @@ class PortfolioRepository {
       Skill(
         name: 'Java',
         iconPath: 'assets/icons/java.png',
-        proficiency: 0.75,
+        proficiency: 1.0,
         category: 'Language',
         description: 'Object-oriented programming language',
       ),
       Skill(
         name: 'Laravel',
         iconPath: 'assets/icons/laravel.png',
-        proficiency: 0.7,
+        proficiency: 1.0,
         category: 'Backend',
         description: 'PHP web application framework',
       ),
       Skill(
         name: 'SQL',
         iconPath: 'assets/icons/sql.png',
-        proficiency: 0.8,
+        proficiency: 1.0,
         category: 'Database',
         description: 'Database query language',
       ),
@@ -137,28 +116,28 @@ class PortfolioRepository {
       Skill(
         name: 'Git',
         iconPath: 'assets/icons/git.png',
-        proficiency: 0.85,
+        proficiency: 1.0,
         category: 'Tool',
         description: 'Version control system',
       ),
       Skill(
         name: 'Figma',
         iconPath: 'assets/icons/figma.png',
-        proficiency: 0.75,
+        proficiency: 1.0,
         category: 'Design',
         description: 'UI/UX design and prototyping',
       ),
       Skill(
         name: 'Prototyping',
         iconPath: 'assets/icons/prototype.png',
-        proficiency: 0.7,
+        proficiency: 1.0,
         category: 'Design',
         description: 'Creating interactive prototypes',
       ),
       Skill(
         name: 'UI/UX Design',
         iconPath: 'assets/icons/design.png',
-        proficiency: 0.75,
+        proficiency: 1.0,
         category: 'Design',
         description: 'User interface and experience design',
       ),
@@ -167,14 +146,14 @@ class PortfolioRepository {
       Skill(
         name: 'Android Studio',
         iconPath: 'assets/icons/android_studio.png',
-        proficiency: 0.8,
+        proficiency: 1.0,
         category: 'Tool',
         description: 'Android development IDE',
       ),
       Skill(
         name: 'VS Code',
         iconPath: 'assets/icons/vscode.png',
-        proficiency: 0.9,
+        proficiency: 1.0,
         category: 'Tool',
         description: 'Code editor and IDE',
       ),
@@ -183,7 +162,7 @@ class PortfolioRepository {
       Skill(
         name: 'REST APIs',
         iconPath: 'assets/icons/api.png',
-        proficiency: 0.85,
+        proficiency: 1.0,
         category: 'Backend',
         description: 'API integration and development',
       ),

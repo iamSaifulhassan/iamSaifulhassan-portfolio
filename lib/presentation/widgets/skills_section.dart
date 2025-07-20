@@ -126,48 +126,10 @@ class SkillsSection extends StatelessWidget {
             ),
             const SizedBox(height: 15),
             Text(
-              skill.description,
-              style: AppTheme.bodyStyle.copyWith(fontSize: 13),
+              skill.description,              style: AppTheme.bodyStyle.copyWith(fontSize: 13),
               textAlign: TextAlign.center,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 20),
-            // Proficiency Bar
-            Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Proficiency',
-                      style: AppTheme.bodyStyle.copyWith(fontSize: 12),
-                    ),
-                    Text(
-                      '${(skill.proficiency * 100).toInt()}%',
-                      style: AppTheme.bodyStyle.copyWith(
-                        fontSize: 12,
-                        color: AppTheme.primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                TweenAnimationBuilder<double>(
-                  duration: Duration(milliseconds: 1500 + (index * 100)),
-                  tween: Tween(begin: 0.0, end: skill.proficiency),
-                  builder: (context, value, child) {
-                    return LinearProgressIndicator(
-                      value: value,
-                      backgroundColor: AppTheme.surfaceColor,
-                      valueColor: const AlwaysStoppedAnimation<Color>(
-                        AppTheme.primaryColor,
-                      ),
-                      minHeight: 6,
-                    );
-                  },
-                ),
-              ],
             ),
           ],
         ),

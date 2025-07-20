@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AppTheme {  // Colors (inspired by your design)
+class AppTheme {
+  // Colors (inspired by your design)
   static const Color primaryColor = Color(0xFF00BCD4); // Teal/Cyan
   static const Color secondaryColor = Color(0xFF26C6DA); // Light Cyan
   static const Color accentColor = Color(0xFF00ACC1); // Dark Cyan
