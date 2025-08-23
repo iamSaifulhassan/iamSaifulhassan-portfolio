@@ -30,7 +30,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
       child: Column(
         children: [
           FadeInDown(
-            duration: const Duration(milliseconds: 800),
+            duration: const Duration(milliseconds: 100),
             child: Text(
               'Featured Projects',
               style:
@@ -40,7 +40,7 @@ class _ProjectsSectionState extends State<ProjectsSection> {
           ),
           const SizedBox(height: 20),
           FadeInDown(
-            duration: const Duration(milliseconds: 1000),
+            duration: const Duration(milliseconds: 100),
             child: Container(
               width: 100,
               height: 4,
@@ -152,9 +152,9 @@ class _ProjectsSectionState extends State<ProjectsSection> {
             Container(
               height: 200,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: AppTheme.primaryGradient,
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),

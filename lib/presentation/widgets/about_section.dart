@@ -1,10 +1,105 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../core/themes/app_theme.dart';
 import '../../core/constants/app_constants.dart';
 import '../../data/repositories/portfolio_repository.dart';
 
 class AboutSection extends StatelessWidget {
+  Widget _buildCertWithName(IconData icon, Color color, String name) {
+    return Column(
+      children: [
+        name == 'JP Morgan'
+            ? Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.08),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Image.asset(
+                  'assets/images/jpmorgan.png',
+                  width: 28,
+                  height: 28,
+                  fit: BoxFit.contain,
+                ),
+              )
+            : name == 'Oracle'
+                ? Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: 8,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Image.asset(
+                      'assets/images/oracle.png',
+                      width: 28,
+                      height: 28,
+                      fit: BoxFit.contain,
+                    ),
+                  )
+                : name == 'Mindluster'
+                    ? Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.08),
+                              blurRadius: 8,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Image.asset(
+                          'assets/images/Mindluster.png',
+                          width: 28,
+                          height: 28,
+                          fit: BoxFit.contain,
+                        ),
+                      )
+                    : _buildCertIcon(icon, color),
+        const SizedBox(height: 4),
+        Text(
+          name,
+          style: AppTheme.bodyStyle.copyWith(fontSize: 13, color: Colors.white),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCertIcon(IconData icon, Color color) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Icon(icon, size: 28, color: color),
+    );
+  }
+
   const AboutSection({super.key});
 
   @override
@@ -47,8 +142,8 @@ class AboutSection extends StatelessWidget {
               : _buildMobileLayout(context),
           const SizedBox(height: 80),
           _buildStatsSection(isDesktop),
-          const SizedBox(height: 80),
-          _buildExperienceSection(isDesktop),
+          // const SizedBox(height: 80),
+          // _buildExperienceSection(isDesktop),
         ],
       ),
     );
@@ -63,9 +158,6 @@ class AboutSection extends StatelessWidget {
           child: _buildAboutContent(),
         ),
         const SizedBox(width: 60),
-        Expanded(
-          child: _buildSkillsOverview(),
-        ),
       ],
     );
   }
@@ -74,8 +166,6 @@ class AboutSection extends StatelessWidget {
     return Column(
       children: [
         _buildAboutContent(),
-        const SizedBox(height: 40),
-        _buildSkillsOverview(),
       ],
     );
   }
@@ -110,93 +200,69 @@ class AboutSection extends StatelessWidget {
     );
   }
 
-  Widget _buildSkillsOverview() {
-    final skills = PortfolioRepository.getSkills().take(6).toList();
-
-    return FadeInRight(
-      duration: const Duration(milliseconds: 1200),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Technical Skills',
-            style: AppTheme.subHeadingStyle.copyWith(fontSize: 24),
-          ),
-          const SizedBox(height: 30),
-          ...skills
-              .map((skill) => Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              skill.name,
-                              style: AppTheme.bodyStyle.copyWith(fontSize: 16),
-                            ),
-                            Text(
-                              '${(skill.proficiency * 100).toInt()}%',
-                              style: AppTheme.bodyStyle.copyWith(fontSize: 14),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        LinearProgressIndicator(
-                          value: skill.proficiency,
-                          backgroundColor: AppTheme.surfaceColor,
-                          valueColor: const AlwaysStoppedAnimation<Color>(
-                              AppTheme.primaryColor),
-                        ),
-                      ],
-                    ),
-                  ))
-              .toList(),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInfoChip(String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceColor,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppTheme.primaryColor.withOpacity(0.3)),
-      ),
-      child: Text(
-        text,
-        style: AppTheme.bodyStyle.copyWith(fontSize: 14),
-      ),
-    );
-  }
-
   Widget _buildStatsSection(bool isDesktop) {
-    return FadeInUp(
-      duration: const Duration(milliseconds: 1400),
-      child: Container(
-        padding: const EdgeInsets.all(40),
-        decoration: BoxDecoration(
-          gradient: AppTheme.cardGradient,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: AppTheme.cardShadow,
+    return Column(
+      children: [
+        FadeInUp(
+          duration: const Duration(milliseconds: 1400),
+          child: Container(
+            padding: const EdgeInsets.all(40),
+            decoration: BoxDecoration(
+              gradient: AppTheme.cardGradient,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: AppTheme.cardShadow,
+            ),
+            child: isDesktop
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: _buildStatItems(),
+                  )
+                : Column(
+                    children: _buildStatItems()
+                        .map((item) => Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: item,
+                            ))
+                        .toList(),
+                  ),
+          ),
         ),
-        child: isDesktop
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: _buildStatItems(),
-              )
-            : Column(
-                children: _buildStatItems()
-                    .map((item) => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: item,
-                        ))
-                    .toList(),
-              ),
-      ),
+        const SizedBox(height: 24),
+        Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Certified by:',
+                  style: AppTheme.bodyStyle.copyWith(fontSize: 16),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                _buildCertWithName(
+                    FontAwesomeIcons.aws, const Color(0xFFFF9900), 'AWS'),
+                const SizedBox(width: 18),
+                _buildCertWithName(FontAwesomeIcons.database,
+                    const Color(0xFFF80000), 'Oracle'),
+                const SizedBox(width: 18),
+                _buildCertWithName(FontAwesomeIcons.hackerrank,
+                    const Color(0xFF2EC866), 'Hackerrank'),
+                const SizedBox(width: 18),
+                _buildCertWithName(FontAwesomeIcons.buildingColumns,
+                    const Color(0xFF0071C5), 'JP Morgan'),
+                const SizedBox(width: 18),
+                _buildCertWithName(
+                    Icons.school, const Color(0xFF1E90FF), 'Mindluster'),
+              ],
+            ),
+          ],
+        ),
+      ],
     );
   }
 
@@ -242,92 +308,151 @@ class AboutSection extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 40),
-          ...experiences
-              .map((experience) => Container(
-                    margin: const EdgeInsets.only(bottom: 30),
-                    padding: const EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                      color: AppTheme.cardColor,
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: AppTheme.cardShadow,
-                    ),
+          ...List.generate(experiences.length, (index) {
+            final experience = experiences[index];
+            final isLast = index == experiences.length - 1;
+            return IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Timeline dot and line
+                  const SizedBox(
+                    width: 10.0,
+                  ),
+                  SizedBox(
+                    width: 32,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    experience.position,
-                                    style: AppTheme.subHeadingStyle
-                                        .copyWith(fontSize: 20),
-                                  ),
-                                  Text(
-                                    experience.company,
-                                    style: AppTheme.bodyStyle.copyWith(
-                                      color: AppTheme.primaryColor,
-                                      fontSize: 16,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                        // Dot
+                        Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: AppTheme.primaryColor,
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: AppTheme.primaryColor.withOpacity(0.2),
+                              width: 4,
                             ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 6),
-                              decoration: BoxDecoration(
-                                color: AppTheme.primaryColor.withOpacity(0.1),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                experience.duration,
-                                style: AppTheme.bodyStyle.copyWith(
-                                  color: AppTheme.primaryColor,
-                                  fontSize: 14,
-                                ),
-                              ),
+                          ),
+                        ),
+                        // Line (except for last item)
+                        if (!isLast)
+                          Expanded(
+                            child: Container(
+                              width: 4,
+                              color: AppTheme.primaryColor.withOpacity(0.3),
                             ),
-                          ],
-                        ),
-                        const SizedBox(height: 15),
-                        Text(
-                          experience.description,
-                          style: AppTheme.bodyStyle.copyWith(fontSize: 16),
-                        ),
-                        const SizedBox(height: 15),
-                        ...experience.achievements
-                            .map((achievement) => Padding(
-                                  padding: const EdgeInsets.only(bottom: 8),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Icon(
-                                        Icons.check_circle,
-                                        color: AppTheme.primaryColor,
-                                        size: 20,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Expanded(
-                                        child: Text(
-                                          achievement,
-                                          style: AppTheme.bodyStyle
-                                              .copyWith(fontSize: 15),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ))
-                            .toList(),
+                          ),
                       ],
                     ),
-                  ))
-              .toList(),
+                  ),
+                  const SizedBox(width: 10),
+                  // Experience card
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 30),
+                      padding: const EdgeInsets.all(30),
+                      decoration: BoxDecoration(
+                        color: AppTheme.cardColor,
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: AppTheme.cardShadow,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      experience.position,
+                                      style: AppTheme.subHeadingStyle
+                                          .copyWith(fontSize: 20),
+                                    ),
+                                    Text(
+                                      experience.company,
+                                      style: AppTheme.bodyStyle.copyWith(
+                                        color: AppTheme.primaryColor,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12, vertical: 6),
+                                decoration: BoxDecoration(
+                                  color: AppTheme.primaryColor.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(
+                                  experience.duration,
+                                  style: AppTheme.bodyStyle.copyWith(
+                                    color: AppTheme.primaryColor,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 15),
+                          Text(
+                            experience.description,
+                            style: AppTheme.bodyStyle.copyWith(fontSize: 16),
+                          ),
+                          const SizedBox(height: 15),
+                          ...experience.achievements
+                              .map((achievement) => Padding(
+                                    padding: const EdgeInsets.only(bottom: 8),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Icon(
+                                          Icons.check_circle,
+                                          color: AppTheme.primaryColor,
+                                          size: 20,
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Text(
+                                            achievement,
+                                            style: AppTheme.bodyStyle
+                                                .copyWith(fontSize: 15),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
         ],
+      ),
+    );
+  }
+
+  Widget _buildInfoChip(String text) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceColor,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppTheme.primaryColor.withOpacity(0.3)),
+      ),
+      child: Text(
+        text,
+        style: AppTheme.bodyStyle.copyWith(fontSize: 14),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/themes/app_theme.dart';
 import '../../core/constants/app_constants.dart';
@@ -33,8 +34,8 @@ class _ContactSectionState extends State<ContactSection> {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        horizontal: isDesktop ? 100 : (isTablet ? 50 : 20),
-        vertical: 100,
+        horizontal: isDesktop ? 100 : (isTablet ? 50 : 12),
+        vertical: isDesktop ? 100 : (isTablet ? 80 : 40),
       ),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -45,6 +46,17 @@ class _ContactSectionState extends State<ContactSection> {
       ),
       child: Column(
         children: [
+          // Section Icon
+          FadeInDown(
+            duration: const Duration(milliseconds: 700),
+            child: CircleAvatar(
+              radius: isDesktop ? 38 : 30,
+              backgroundColor: AppTheme.primaryColor.withOpacity(0.12),
+              child: Icon(Icons.mail_outline,
+                  size: isDesktop ? 38 : 30, color: AppTheme.primaryColor),
+            ),
+          ),
+          const SizedBox(height: 18),
           FadeInDown(
             duration: const Duration(milliseconds: 800),
             child: Text(
@@ -54,7 +66,7 @@ class _ContactSectionState extends State<ContactSection> {
               textAlign: TextAlign.center,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
           FadeInDown(
             duration: const Duration(milliseconds: 1000),
             child: Container(
@@ -66,7 +78,7 @@ class _ContactSectionState extends State<ContactSection> {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 18),
           FadeInDown(
             duration: const Duration(milliseconds: 1200),
             child: Text(
@@ -75,8 +87,43 @@ class _ContactSectionState extends State<ContactSection> {
               textAlign: TextAlign.center,
             ),
           ),
-          const SizedBox(height: 60),
-          isDesktop ? _buildDesktopLayout() : _buildMobileLayout(),
+          const SizedBox(height: 50),
+          // Responsive layout
+          if (isDesktop || isTablet)
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Contact Form
+                Expanded(
+                  flex: 3,
+                  child: _buildContactForm(enhanced: true, isMobile: false),
+                ),
+                Container(
+                  width: 1,
+                  height: 340,
+                  margin: const EdgeInsets.symmetric(horizontal: 36),
+                  color: AppTheme.primaryColor.withOpacity(0.10),
+                ),
+                // Contact Info
+                Expanded(
+                  flex: 2,
+                  child: _buildContactInfo(enhanced: true),
+                ),
+              ],
+            )
+          else
+            Column(
+              children: [
+                _buildContactForm(enhanced: true, isMobile: true),
+                const SizedBox(height: 36),
+                Divider(
+                  color: AppTheme.primaryColor.withOpacity(0.10),
+                  thickness: 1,
+                ),
+                const SizedBox(height: 36),
+                _buildContactInfo(enhanced: true),
+              ],
+            ),
           const SizedBox(height: 60),
           _buildFooter(),
         ],
@@ -84,181 +131,137 @@ class _ContactSectionState extends State<ContactSection> {
     );
   }
 
-  Widget _buildDesktopLayout() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: _buildContactInfo(),
-        ),
-        const SizedBox(width: 60),
-        Expanded(
-          child: _buildContactForm(),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildMobileLayout() {
-    return Column(
-      children: [
-        _buildContactForm(),
-        const SizedBox(height: 40),
-        _buildContactInfo(),
-      ],
-    );
-  }
-
-  Widget _buildContactInfo() {
-    return FadeInLeft(
-      duration: const Duration(milliseconds: 1400),
+  Widget _buildContactInfo({bool enhanced = false}) {
+    return Container(
+      constraints: const BoxConstraints(maxWidth: 500), // match form width
+      padding: EdgeInsets.symmetric(
+        horizontal: enhanced ? 24 : 0,
+        vertical: enhanced ? 24 : 0,
+      ),
+      decoration: enhanced
+          ? BoxDecoration(
+              color: AppTheme.surfaceColor,
+              borderRadius: BorderRadius.circular(24),
+              border:
+                  Border.all(color: AppTheme.primaryColor.withOpacity(0.08)),
+              boxShadow: AppTheme.cardShadow,
+            )
+          : null,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Contact Information',
-            style: AppTheme.subHeadingStyle.copyWith(fontSize: 28),
-          ),
-          const SizedBox(height: 30),
-          _buildContactItem(
-            Icons.email,
-            'Email',
-            AppConstants.email,
-            () => _launchURL('mailto:${AppConstants.email}'),
-          ),
-          const SizedBox(height: 20),
-          _buildContactItem(
-            Icons.phone,
-            'Phone',
-            AppConstants.phone,
-            () => _launchURL('tel:${AppConstants.phone}'),
-          ),
-          const SizedBox(height: 20),
-          _buildContactItem(
-            Icons.location_on,
-            'Location',
-            AppConstants.location,
-            null,
-          ),
-          const SizedBox(height: 40),
-          Text(
-            'Follow Me',
-            style: AppTheme.subHeadingStyle.copyWith(fontSize: 20),
-          ),
-          const SizedBox(height: 20),
           Row(
             children: [
-              _buildSocialButton(
-                Icons.work,
-                'LinkedIn',
-                () => _launchURL(AppConstants.linkedIn),
-              ),
-              const SizedBox(width: 15),
-              _buildSocialButton(
-                Icons.code,
-                'GitHub',
-                () => _launchURL(AppConstants.github),
-              ),
-              const SizedBox(width: 15),
-              _buildSocialButton(
-                Icons.web,
-                'Website',
-                () => _launchURL(AppConstants.website),
+              const Icon(Icons.info_outline, color: AppTheme.primaryColor, size: 26),
+              const SizedBox(width: 10),
+              Text(
+                'Contact Information',
+                style: AppTheme.subHeadingStyle.copyWith(fontSize: 22),
               ),
             ],
           ),
+          const SizedBox(height: 24),
+          _buildContactItem(
+            icon: Icons.email,
+            label: 'Email',
+            value: AppConstants.email,
+            enhanced: enhanced,
+          ),
+          const SizedBox(height: 18),
+          _buildContactItem(
+            icon: Icons.phone,
+            label: 'Phone',
+            value: AppConstants.phone,
+            enhanced: enhanced,
+          ),
+          const SizedBox(height: 18),
+          _buildContactItem(
+            icon: Icons.location_on,
+            label: 'Location',
+            value: AppConstants.location,
+            enhanced: enhanced,
+          ),
+          if (enhanced) ...[
+            const SizedBox(height: 28),
+            Divider(
+                color: AppTheme.primaryColor.withOpacity(0.10), thickness: 1),
+            const SizedBox(height: 18),
+            Text('Social Links',
+                style: AppTheme.bodyStyle
+                    .copyWith(fontWeight: FontWeight.bold, fontSize: 15)),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                IconButton(
+                  icon: const Icon(FontAwesomeIcons.globe,
+                      color: AppTheme.primaryColor),
+                  tooltip: 'Portfolio',
+                  onPressed: () => _launchURL(AppConstants.portfolioUrl),
+                ),
+                IconButton(
+                  icon: const Icon(FontAwesomeIcons.github, color: Colors.black),
+                  tooltip: 'GitHub',
+                  onPressed: () => _launchURL(AppConstants.githubUrl),
+                ),
+                IconButton(
+                  icon:
+                      Icon(FontAwesomeIcons.linkedin, color: Colors.blue[700]),
+                  tooltip: 'LinkedIn',
+                  onPressed: () => _launchURL(AppConstants.linkedinUrl),
+                ),
+              ],
+            ),
+          ],
         ],
       ),
     );
   }
 
-  Widget _buildContactItem(
-    IconData icon,
-    String label,
-    String value,
-    VoidCallback? onTap,
-  ) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: AppTheme.cardColor,
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: AppTheme.primaryColor.withOpacity(0.1),
-          ),
-        ),
-        child: Row(
+  Widget _buildContactItem({
+    required IconData icon,
+    required String label,
+    required String value,
+    bool enhanced = false,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Icon(icon, color: AppTheme.primaryColor, size: enhanced ? 22 : 18),
+        const SizedBox(width: 10),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                gradient: AppTheme.primaryGradient,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Icon(icon, color: Colors.white, size: 24),
-            ),
-            const SizedBox(width: 15),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    label,
-                    style: AppTheme.bodyStyle.copyWith(
-                      fontSize: 14,
-                      color: AppTheme.textHint,
-                    ),
-                  ),
-                  Text(
-                    value,
-                    style: AppTheme.bodyStyle.copyWith(fontSize: 16),
-                  ),
-                ],
-              ),
-            ),
-            if (onTap != null)
-              const Icon(
-                Icons.arrow_forward_ios,
-                color: AppTheme.primaryColor,
-                size: 16,
-              ),
+            Text(label,
+                style: AppTheme.bodyStyle.copyWith(
+                    fontWeight: FontWeight.bold, fontSize: enhanced ? 15 : 13)),
+            const SizedBox(height: 2),
+            Text(value,
+                style: AppTheme.bodyStyle.copyWith(
+                    fontSize: enhanced ? 15 : 13,
+                    color: AppTheme.textSecondary)),
           ],
         ),
-      ),
+      ],
     );
   }
 
-  Widget _buildSocialButton(IconData icon, String label, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          gradient: AppTheme.primaryGradient,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              color: AppTheme.primaryColor.withOpacity(0.3),
-              blurRadius: 10,
-              offset: const Offset(0, 5),
-            ),
-          ],
-        ),
-        child: Icon(icon, color: Colors.white, size: 24),
-      ),
-    );
-  }
-
-  Widget _buildContactForm() {
+  Widget _buildContactForm({bool enhanced = false, bool isMobile = false}) {
     return FadeInRight(
       duration: const Duration(milliseconds: 1400),
       child: Container(
-        padding: const EdgeInsets.all(30),
+        constraints:
+            const BoxConstraints(maxWidth: 500), // match info card width
+        padding: EdgeInsets.symmetric(
+          horizontal: enhanced ? (isMobile ? 12 : 32) : 30,
+          vertical: enhanced ? 32 : 30,
+        ),
         decoration: BoxDecoration(
           gradient: AppTheme.cardGradient,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(24),
+          border: enhanced
+              ? Border.all(
+                  color: AppTheme.primaryColor.withOpacity(0.10), width: 2)
+              : null,
           boxShadow: AppTheme.cardShadow,
         ),
         child: Form(
@@ -266,9 +269,15 @@ class _ContactSectionState extends State<ContactSection> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Send me a message',
-                style: AppTheme.subHeadingStyle.copyWith(fontSize: 24),
+              Row(
+                children: [
+                  const Icon(Icons.edit_note, color: AppTheme.primaryColor, size: 28),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Send me a message',
+                    style: AppTheme.subHeadingStyle.copyWith(fontSize: 24),
+                  ),
+                ],
               ),
               const SizedBox(height: 30),
               _buildTextField(
@@ -282,7 +291,6 @@ class _ContactSectionState extends State<ContactSection> {
                   return null;
                 },
               ),
-              const SizedBox(height: 20),
               _buildTextField(
                 controller: _emailController,
                 label: 'Your Email',
@@ -292,14 +300,13 @@ class _ContactSectionState extends State<ContactSection> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter your email';
                   }
-                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                  if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}\$')
                       .hasMatch(value)) {
                     return 'Please enter a valid email';
                   }
                   return null;
                 },
               ),
-              const SizedBox(height: 20),
               _buildTextField(
                 controller: _messageController,
                 label: 'Your Message',
@@ -315,16 +322,26 @@ class _ContactSectionState extends State<ContactSection> {
               const SizedBox(height: 30),
               SizedBox(
                 width: double.infinity,
-                child: ElevatedButton.icon(
-                  onPressed: _sendMessage,
-                  icon: const Icon(Icons.send),
-                  label: const Text('Send Message'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppTheme.primaryColor,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: ElevatedButton.icon(
+                    onPressed: _sendMessage,
+                    icon: const Icon(Icons.send, size: 22),
+                    label: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 2.0),
+                      child: Text('Send Message',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppTheme.primaryColor,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16), // match fields
+                      ),
+                      shadowColor: AppTheme.primaryColor.withOpacity(0.18),
                     ),
                   ),
                 ),
@@ -344,29 +361,82 @@ class _ContactSectionState extends State<ContactSection> {
     int maxLines = 1,
     String? Function(String?)? validator,
   }) {
-    return TextFormField(
-      controller: controller,
-      keyboardType: keyboardType,
-      maxLines: maxLines,
-      validator: validator,
-      style: AppTheme.bodyStyle.copyWith(fontSize: 16),
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: AppTheme.bodyStyle.copyWith(color: AppTheme.textHint),
-        prefixIcon: Icon(icon, color: AppTheme.primaryColor),
-        filled: true,
-        fillColor: AppTheme.surfaceColor,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide.none,
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppTheme.primaryColor, width: 2),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.red, width: 2),
+    final fieldBg = Colors.white.withOpacity(0.08);
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          vertical: 10.0), // more vertical space for clarity
+      child: Focus(
+        child: Builder(
+          builder: (context) {
+            final isFocused = Focus.of(context).hasFocus;
+            return AnimatedContainer(
+              duration: const Duration(milliseconds: 180),
+              decoration: BoxDecoration(
+                color: fieldBg,
+                borderRadius: BorderRadius.circular(
+                    18), // slightly less for better blending
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(isFocused ? 0.10 : 0.06),
+                    blurRadius: isFocused ? 16 : 8,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+                border: Border.all(
+                  color: isFocused
+                      ? AppTheme.primaryColor.withOpacity(0.45)
+                      : Colors.white.withOpacity(0.10),
+                  width:
+                      isFocused ? 1.5 : 1.0, // thinner border for modern look
+                ),
+              ),
+              child: TextFormField(
+                controller: controller,
+                keyboardType: keyboardType,
+                maxLines: maxLines,
+                validator: validator,
+                style: AppTheme.bodyStyle
+                    .copyWith(fontSize: 16, color: Colors.white),
+                decoration: InputDecoration(
+                  labelText: label,
+                  labelStyle: AppTheme.bodyStyle.copyWith(
+                      color: Colors.white.withOpacity(0.93),
+                      fontWeight: FontWeight.w600),
+                  prefixIcon:
+                      Icon(icon, color: AppTheme.primaryColor, size: 22),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide.none,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide(
+                      color: AppTheme.primaryColor.withOpacity(0.45),
+                      width: 1.5,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide(
+                      color: Colors.white.withOpacity(0.10),
+                      width: 1.0,
+                    ),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(18),
+                    borderSide: BorderSide(
+                      color: Colors.red.withOpacity(0.7),
+                      width: 1.2,
+                    ),
+                  ),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 22, horizontal: 20),
+                  filled: true,
+                  fillColor: fieldBg,
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

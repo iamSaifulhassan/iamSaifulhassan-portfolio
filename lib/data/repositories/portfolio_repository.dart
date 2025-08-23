@@ -4,8 +4,39 @@ import '../models/experience.dart';
 import '../models/education.dart';
 
 class PortfolioRepository {
+  // Portfolio Stats
+  static const int projectsCompleted = 10;
+  static const int skillsLearned = 15;
+
+  // Certifications with logos
+  static List<Map<String, String>> getCertifications() {
+    return [
+      {
+        'name': 'Amazon AWS',
+        'icon': 'FontAwesomeIcons.aws',
+      },
+      {
+        'name': 'Oracle',
+        'icon': 'FontAwesomeIcons.oracle',
+      },
+      {
+        'name': 'Mindluster',
+        'icon': 'Icons.school',
+      },
+      {
+        'name': 'Hackerrank',
+        'icon': 'FontAwesomeIcons.hackerrank',
+      },
+      {
+        'name': 'JP Morgan',
+        'icon': 'FontAwesomeIcons.building',
+      },
+    ];
+  }
+
   // Sample Projects Data
-  static List<Project> getProjects() {    return [
+  static List<Project> getProjects() {
+    return [
       Project(
         title: 'Flutter E-Commerce App',
         description:
@@ -20,7 +51,13 @@ class PortfolioRepository {
         title: 'Book Reading App',
         description:
             'A mobile application for book lovers with reading features, bookmarks, and personalized recommendations.',
-        technologies: ['Flutter', 'Dart', 'Firebase', 'PDF Viewer', 'Local Storage'],
+        technologies: [
+          'Flutter',
+          'Dart',
+          'Firebase',
+          'PDF Viewer',
+          'Local Storage'
+        ],
         category: 'Mobile App',
         isFeatured: true,
         githubUrl: 'https://github.com/iamsaifulhassan/bookreadapp',
@@ -30,17 +67,29 @@ class PortfolioRepository {
         title: 'Portfolio Website',
         description:
             'A responsive portfolio website built with Flutter Web showcasing projects and skills for freelance work.',
-        technologies: ['Flutter Web', 'Dart', 'Responsive Design', 'Animations'],
+        technologies: [
+          'Flutter Web',
+          'Dart',
+          'Responsive Design',
+          'Animations'
+        ],
         category: 'Web App',
         isFeatured: true,
-        githubUrl: 'https://github.com/iamsaifulhassan/iamsaifulhassan_portfolio',
+        githubUrl:
+            'https://github.com/iamsaifulhassan/iamsaifulhassan_portfolio',
         // liveUrl: 'Add your live demo link here',
       ),
       Project(
         title: 'Task Management App',
         description:
             'A productivity app for managing daily tasks with categories, reminders, and progress tracking.',
-        technologies: ['Flutter', 'Dart', 'SQLite', 'Local Notifications', 'Provider'],
+        technologies: [
+          'Flutter',
+          'Dart',
+          'SQLite',
+          'Local Notifications',
+          'Provider'
+        ],
         category: 'Mobile App',
         githubUrl: 'https://github.com/iamsaifulhassan/task-manager',
         // liveUrl: 'Add your live demo link here',
@@ -53,7 +102,8 @@ class PortfolioRepository {
         category: 'Mobile App',
         githubUrl: 'https://github.com/iamsaifulhassan/weather-app',
         // liveUrl: 'Add your live demo link here',
-      ),    ];
+      ),
+    ];
   }
 
   // Sample Skills Data
@@ -88,7 +138,7 @@ class PortfolioRepository {
         category: 'State Management',
         description: 'State management for Flutter',
       ),
-      
+
       // Backend & Languages
       Skill(
         name: 'Java',
@@ -111,7 +161,7 @@ class PortfolioRepository {
         category: 'Database',
         description: 'Database query language',
       ),
-      
+
       // Tools & Design
       Skill(
         name: 'Git',
@@ -141,7 +191,7 @@ class PortfolioRepository {
         category: 'Design',
         description: 'User interface and experience design',
       ),
-      
+
       // Development Tools
       Skill(
         name: 'Android Studio',
@@ -157,7 +207,7 @@ class PortfolioRepository {
         category: 'Tool',
         description: 'Code editor and IDE',
       ),
-      
+
       // APIs
       Skill(
         name: 'REST APIs',
@@ -173,42 +223,29 @@ class PortfolioRepository {
   static List<Experience> getExperience() {
     return [
       Experience(
-        company: 'Tech Solutions Ltd.',
-        position: 'Senior Flutter Developer',
-        duration: '2022 - Present',
+        company: 'Comsats University Islamabad',
+        position: 'Java Developer',
+        duration: '2023 - Present',
         description:
-            'Leading mobile app development projects and mentoring junior developers.',
+            'Built scalable backend systems using Java and MySQL. Focused on Academic projects and internships to enhance skills in software development.',
         achievements: [
-          'Developed 5+ mobile applications with 100K+ downloads',
-          'Improved app performance by 40% through optimization',
-          'Led a team of 3 developers on major projects',
-          'Implemented CI/CD pipeline reducing deployment time by 60%',
+          'Developed RESTful APIs for mobile applications',
+          'Optimized database queries for performance',
+          'Error handling and logging improvements',
         ],
       ),
       Experience(
-        company: 'StartUp Inc.',
-        position: 'Flutter Developer',
-        duration: '2021 - 2022',
+        company: 'Comsats University Islamabad',
+        position: 'Flutter Full Stack Developer',
+        duration: '2024 - Present',
         description:
-            'Developed cross-platform mobile applications for various clients.',
+            'Developed cross-platform mobile applications using Flutter to learn and gain experience. Focused on performance optimization with unique features and user experience.',
         achievements: [
-          'Built 10+ mobile applications from scratch',
-          'Integrated multiple third-party APIs and payment gateways',
-          'Collaborated with design team to implement pixel-perfect UIs',
-          'Maintained 98% crash-free rate across all applications',
-        ],
-      ),
-      Experience(
-        company: 'Freelance',
-        position: 'Mobile App Developer',
-        duration: '2020 - 2021',
-        description:
-            'Provided mobile app development services to small and medium businesses.',
-        achievements: [
-          'Completed 15+ freelance projects successfully',
-          'Achieved 5-star rating on multiple platforms',
-          'Delivered projects 20% ahead of schedule on average',
-          'Built long-term relationships with repeat clients',
+          'Built 5+ production-ready apps',
+          'Implemented custom Designs and animations',
+          'Integrated RESTful APIs and Firebase',
+          'Optimized app performance and responsiveness',
+          'Learned state management with Provider and Riverpod',
         ],
       ),
     ];
@@ -218,21 +255,13 @@ class PortfolioRepository {
   static List<Education> getEducation() {
     return [
       Education(
-        institution: 'University of Technology',
+        institution: 'Comsats University Islamabad, Wah Campus',
         degree: 'Bachelor of Science',
-        field: 'Computer Science',
-        duration: '2018 - 2022',
-        grade: 'CGPA: 3.8/4.0',
+        field: 'Software Engineering',
+        duration: '2022 - Present',
+        grade: 'CGPA: 3.64/4.00',
         description:
-            'Specialized in mobile application development and software engineering.',
-      ),
-      Education(
-        institution: 'Online Learning Platform',
-        degree: 'Certification',
-        field: 'Flutter Development',
-        duration: '2020',
-        description:
-            'Comprehensive Flutter development course with hands-on projects.',
+            'Specialized in Software Engineering and Mobile Application Development',
       ),
     ];
   }

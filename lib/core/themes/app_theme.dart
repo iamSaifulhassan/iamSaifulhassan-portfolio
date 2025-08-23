@@ -73,7 +73,7 @@ class AppTheme {
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
         ),
-        hintStyle: TextStyle(color: textHint),
+        hintStyle: const TextStyle(color: textHint),
       ),
     );
   }
