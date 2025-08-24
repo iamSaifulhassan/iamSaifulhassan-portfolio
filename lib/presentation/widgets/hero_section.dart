@@ -184,7 +184,7 @@ class HeroSection extends StatelessWidget {
                 shape: BoxShape.circle,
               ),
               child: Image.asset(
-                'assets/images/profile.jpg',
+                'assets/images/Profile.jpg',
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(

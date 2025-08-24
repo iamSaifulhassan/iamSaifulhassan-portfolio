@@ -81735,7 +81735,7 @@ p=t.p
 return A.c_(A.b([s,B.yV,l,B.dJ,r,B.eV,A.oi(A.cp(A.b([o.M2("Download CV",B.Fh,new A.a3O(o,a),!0),B.kG,o.M2("View Work",B.Ft,new A.a3P(a),!1)],p),B.z,q,B.t),B.fA),B.eV,A.oi(o.a0S(),B.mG)],p),m,n,B.cl,B.t)},
 a0U(a,b){return this.Jz(a,b,!1)},
 Jt(a){var s=null,r=a?250:320,q=A.b([new A.cO(0,B.bd,A.ak(102,B.cx.u()>>>16&255,B.cx.u()>>>8&255,B.cx.u()&255),B.KH,30)],t.R)
-return A.arg(A.bD(s,new A.bN(B.mS,new A.HI(A.bD(s,A.a4b("assets/images/profile.jpg",new A.a3K(),B.AF,s,s),B.n,s,s,B.Az,s,308,s,s,s,s,308),s),s),B.n,s,s,new A.bo(s,s,s,s,q,B.Gv,B.bn),s,r,s,s,s,s,r),B.bq)},
+return A.arg(A.bD(s,new A.bN(B.mS,new A.HI(A.bD(s,A.a4b("assets/images/Profile.jpg",new A.a3K(),B.AF,s,s),B.n,s,s,B.Az,s,308,s,s,s,s,308),s),s),B.n,s,s,new A.bo(s,s,s,s,q,B.Gv,B.bn),s,r,s,s,s,s,r),B.bq)},
 a0I(){return this.Jt(!1)},
 M2(a,b,c,d){var s=null,r=A.il(b,s,s,s),q=A.aK(a,s,s,s,s,s,s),p=d?B.f:B.J,o=d?B.by:B.f,n=d?s:B.Ao
 return A.are(r,q,c,A.a1j(s,s,p,s,s,s,s,s,s,o,s,s,B.mR,s,new A.cR(A.ct(30),B.u),n,s,s,s,s))},
