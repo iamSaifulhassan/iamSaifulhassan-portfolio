@@ -97,7 +97,7 @@ class PortfolioRepository {
         ],
         category: 'Mobile App',
         isFeatured: true,
-        imageUrl: 'assets/images/projects/book.png',
+        imageUrl: 'assets/images/projects/book_read.png',
         screenshots: [],
         youtubeVideoId: null,
         downloadUrl: 'https://github.com/iamSaifulhassan/bookreadapp',
@@ -181,7 +181,7 @@ class PortfolioRepository {
         ],
         category: 'Desktop App',
         isFeatured: false,
-        imageUrl: 'assets/images/projects/ecommerce.png',
+        imageUrl: 'assets/images/projects/laptop_mockup.png',
         screenshots: [],
         youtubeVideoId: null,
         downloadUrl:

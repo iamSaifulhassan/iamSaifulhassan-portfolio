@@ -436,12 +436,20 @@ class _ImmersiveProjectCardState extends State<_ImmersiveProjectCard> {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
-                                  child: const Text(
-                                    'Download',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
+                                  child: Builder(
+                                    builder: (_) {
+                                      final url = widget.project.downloadUrl!;
+                                      final label = url.contains('figma.com')
+                                          ? 'View on Figma'
+                                          : 'Download';
+                                      return Text(
+                                        label,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ),
