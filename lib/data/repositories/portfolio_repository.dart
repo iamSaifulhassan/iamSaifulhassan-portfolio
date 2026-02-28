@@ -103,7 +103,47 @@ class PortfolioRepository {
         downloadUrl: 'https://github.com/iamSaifulhassan/bookreadapp',
       ),
 
-      // ── 2. University Portal ──────────────────────────────────────────────
+      // ── 2. HistoMeet ─────────────────────────────────────────────────────
+      Project(
+        title: 'HistoMeet - AI Historical Chat Platform',
+        description:
+            'A Figma UI/UX project from my HCI course — design for an app where you can chat with AI versions of historical figures like Einstein, Napoleon, and more.',
+        longDescription:
+            'This was a semester project for my Human-Computer Interaction (HCI) course. The idea came from wanting to make history less passive — what if you could just talk to the people who made it?\n\n'
+            'What We Designed\n'
+            'A mobile app where users can chat with AI representations of historical figures, browse personalities by century (16th–20th), and even hypothetically video call them. We also designed an authentication flow, referral/credit system, and account settings.\n\n'
+            'How We Built It\n'
+            'The whole thing was done in Figma — wireframes, high-fidelity screens, and a fully interactive prototype. We used Figma\'s collaboration feature to work on it as a team in real time, which was a great experience for design handoff and version control.\n\n'
+            'HCI Principles We Applied\n'
+            "We intentionally applied course concepts throughout: Hick's Law to limit choices per screen, Fitts's Law for touch target sizing, and consistent visual feedback so users always know what's happening. Accessibility — contrast, font size, tap targets — was a priority from day one.",
+        technologies: [
+          'Figma',
+          'UI/UX Design',
+          'Prototyping',
+          'HCI',
+          'Interaction Design',
+          'Collaborative Design',
+        ],
+        features: [
+          'AI-powered chat interface with historical personalities',
+          'Hypothetical video call flow design',
+          'Century-based personality browsing (16th–20th)',
+          'Credit & referral reward system UI',
+          'Secure authentication flow screens',
+          "HCI principles: Hick's Law, Fitts's Law, Consistency & Feedback",
+          'Built collaboratively using Figma real-time collaboration',
+          'Full interactive prototype with navigation flows',
+        ],
+        category: 'Design',
+        isFeatured: true,
+        imageUrl: 'assets/images/projects/histomeet.png',
+        screenshots: [],
+        youtubeVideoId: null,
+        downloadUrl:
+            'https://www.figma.com/design/87zDGjMBjTJzTdQpZbrDdl/HCI-Project?node-id=0-1&p=f&t=khfH897JfDxTaTeg-0',
+      ),
+
+      // ── 3. University Portal ──────────────────────────────────────────────
       Project(
         title: 'University Portal',
         description:

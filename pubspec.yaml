@@ -31,6 +31,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/projects/
+    - assets/images/projects/histomeet.png
     - assets/images/jpmorgan.png
     - assets/images/easports.png
     - assets/images/tech/flutter.svg

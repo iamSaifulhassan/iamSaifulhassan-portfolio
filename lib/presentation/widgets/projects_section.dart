@@ -16,7 +16,14 @@ class ProjectsSection extends StatefulWidget {
 
 class _ProjectsSectionState extends State<ProjectsSection> {
   String selectedCategory = 'All';
-  List<String> categories = ['All', 'Mobile App', 'Web App'];
+  List<String> categories = [
+    'All',
+    'Mobile App',
+    'Web App',
+    'Desktop App',
+    'Design',
+    'AI'
+  ];
 
   @override
   Widget build(BuildContext context) {

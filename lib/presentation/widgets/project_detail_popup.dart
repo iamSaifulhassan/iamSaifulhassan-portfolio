@@ -442,7 +442,22 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
   }
 
   Widget _buildDownloadButton() {
-    final isGitHub = widget.project.downloadUrl!.contains('github.com');
+    final url = widget.project.downloadUrl!;
+    final isGitHub = url.contains('github.com');
+    final isFigma = url.contains('figma.com');
+
+    final IconData icon = isGitHub
+        ? Icons.code
+        : isFigma
+            ? Icons.design_services
+            : Icons.download;
+
+    final String label = isGitHub
+        ? 'View on GitHub'
+        : isFigma
+            ? 'View on Figma'
+            : 'Download App';
+
     return Container(
       width: double.infinity,
       height: 56,
@@ -458,7 +473,7 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
         ],
       ),
       child: ElevatedButton.icon(
-        onPressed: () => _launchURL(widget.project.downloadUrl!),
+        onPressed: () => _launchURL(url),
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
@@ -467,12 +482,12 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
           ),
         ),
         icon: Icon(
-          isGitHub ? Icons.code : Icons.download,
+          icon,
           color: Colors.white,
           size: 24,
         ),
         label: Text(
-          isGitHub ? 'View on GitHub' : 'Download App',
+          label,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
