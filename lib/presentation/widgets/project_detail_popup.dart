@@ -256,6 +256,14 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
   }
 
   Widget _buildScreenshotGallery() {
+    // Build full list: thumbnail first, then screenshots
+    final allImages = <String>[
+      if (widget.project.imageUrl != null) widget.project.imageUrl!,
+      ...widget.project.screenshots,
+    ];
+
+    if (allImages.isEmpty) return const SizedBox.shrink();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -265,27 +273,55 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
         ),
         const SizedBox(height: 16),
         SizedBox(
-          height: 300,
-          child: PageView.builder(
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            itemCount: widget.project.screenshots.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: Image.asset(
-                    widget.project.screenshots[index],
-                    fit: BoxFit.cover,
+          height: 320,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              // Image display
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  allImages[_currentPage],
+                  fit: BoxFit.contain,
+                  width: double.infinity,
+                  height: 320,
+                ),
+              ),
+              // Left arrow
+              if (_currentPage > 0)
+                Positioned(
+                  left: 8,
+                  child: GestureDetector(
+                    onTap: () => setState(() => _currentPage--),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                        shape: BoxShape.circle,
+                      ),
+                      padding: const EdgeInsets.all(10),
+                      child: const Icon(Icons.arrow_back_ios_new,
+                          color: Colors.white, size: 20),
+                    ),
                   ),
                 ),
-              );
-            },
+              // Right arrow
+              if (_currentPage < allImages.length - 1)
+                Positioned(
+                  right: 8,
+                  child: GestureDetector(
+                    onTap: () => setState(() => _currentPage++),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.5),
+                        shape: BoxShape.circle,
+                      ),
+                      padding: const EdgeInsets.all(10),
+                      child: const Icon(Icons.arrow_forward_ios,
+                          color: Colors.white, size: 20),
+                    ),
+                  ),
+                ),
+            ],
           ),
         ),
         const SizedBox(height: 12),
@@ -293,18 +329,21 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            widget.project.screenshots.length,
-            (index) => Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              width: _currentPage == index ? 24 : 8,
-              height: 8,
-              decoration: BoxDecoration(
-                gradient:
-                    _currentPage == index ? AppTheme.primaryGradient : null,
-                color: _currentPage == index
-                    ? null
-                    : AppTheme.textSecondary.withOpacity(0.3),
-                borderRadius: BorderRadius.circular(4),
+            allImages.length,
+            (index) => GestureDetector(
+              onTap: () => setState(() => _currentPage = index),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4),
+                width: _currentPage == index ? 24 : 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  gradient:
+                      _currentPage == index ? AppTheme.primaryGradient : null,
+                  color: _currentPage == index
+                      ? null
+                      : AppTheme.textSecondary.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(4),
+                ),
               ),
             ),
           ),

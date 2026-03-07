@@ -34,6 +34,10 @@ flutter:
     - assets/images/projects/histomeet.png
     - assets/images/projects/laptop_mockup.png
     - assets/images/projects/book_read.png
+    - assets/images/projects/task_banner.png
+    - assets/images/projects/task_new_task.png
+    - assets/images/projects/task_home.png
+    - assets/images/projects/task_login.png
     - assets/images/jpmorgan.png
     - assets/images/easports.png
     - assets/images/tech/flutter.svg
