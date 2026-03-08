@@ -290,6 +290,57 @@ class PortfolioRepository {
         youtubeVideoId: null,
         downloadUrl: 'https://github.com/iamSaifulhassan/SmartTaskmanager',
       ),
+
+      // ── 6. AI Face Shape Detection ────────────────────────────────────────
+      Project(
+        title: 'AI Face Shape Detection & Grooming Assistant',
+        description:
+            'End-to-end AI system that analyzes facial geometry from a single photo and delivers personalized hairstyle, beard, glasses, and makeup recommendations based on detected face shape and gender.',
+        longDescription:
+            'A full-stack AI application combining computer vision, deep learning, and facial anthropometry into a real-time web experience — serving personalized grooming guidance from a single image upload.\n\n'
+            'Hybrid Inference Engine\n'
+            'The core innovation fuses two independent pipelines. MediaPipe Face Mesh extracts 468 3D facial landmarks and computes anthropometric ratios (FWHR, jaw angle, chin angle, face solidity) feeding a heuristic classifier. In parallel, a fine-tuned EfficientNetV2-Small CNN predicts shape from a 224×224 face crop. A weighted voting engine resolves conflicts between the two with context-aware dynamic weights — jumping CNN confidence to 90% when its score exceeds 0.80, and applying per-case rules for known ambiguous shape pairs (e.g., Square/Round, Heart/Oval).\n\n'
+            'Deep Learning Training Pipeline\n'
+            'Trained on ~7,000 labeled face images (Niten Lama + CelebA datasets) using a two-stage transfer learning approach: Stage 1 trains only the classification head (10 epochs, frozen backbone); Stage 2 fine-tunes the top 30% of EfficientNetV2 layers (50 epochs). Focal Loss is used throughout to counter class imbalance across the 5 shape categories.\n\n'
+            'Gender-Aware Recommendation Engine\n'
+            'A JSON rules engine maps each face shape to gender-filtered grooming advice. Male profiles receive hairstyle, beard, and glasses recommendations. Female profiles receive hairstyle, makeup, and glasses recommendations. Each shape also includes a specific "what to avoid" tip per gender.\n\n'
+            'Web Application\n'
+            'A FastAPI + Uvicorn backend serves inference via a REST API. A Vanilla JS frontend allows photo upload, gender selection, and live switching between multiple trained model checkpoints — with a per-model metrics panel showing class-level precision, recall, and F1 scores.',
+        technologies: [
+          'Python',
+          'TensorFlow / Keras',
+          'EfficientNetV2',
+          'MediaPipe',
+          'OpenCV',
+          'Focal Loss',
+          'FastAPI',
+          'Uvicorn',
+          'NumPy',
+          'scikit-learn',
+          'Vanilla JS',
+        ],
+        features: [
+          'Hybrid CNN + geometry dual-pipeline with weighted conflict resolution',
+          'MediaPipe Face Mesh: 468 3D landmark extraction & alignment',
+          'Anthropometric analysis: FWHR, jaw angle, chin angle, face solidity',
+          'EfficientNetV2-Small fine-tuned with Focal Loss for class imbalance',
+          'Two-stage transfer learning: head-only then 30% backbone fine-tuning',
+          'Test-Time Augmentation (TTA): original + flipped image averaged',
+          'Gender-aware recommendations: hairstyles, beards/makeup & glasses',
+          '5 face shape categories: Heart, Oblong, Oval, Round, Square',
+          'Live model switcher: swap between trained checkpoints at runtime',
+          'Per-model metrics panel: per-class precision, recall & F1 scores',
+          'FastAPI REST backend with single-image upload inference endpoint',
+          'CPU-only inference to prevent GPU OOM during concurrent training',
+        ],
+        category: 'AI',
+        isFeatured: true,
+        imageUrl: 'assets/images/projects/aiface.png',
+        screenshots: [],
+        youtubeVideoId: null,
+        downloadUrl:
+            'https://drive.google.com/file/d/1ud1OQmddRMahrnyHIz4UvjgkVdv5-pyh/view?usp=sharing',
+      ),
     ];
   }
 
