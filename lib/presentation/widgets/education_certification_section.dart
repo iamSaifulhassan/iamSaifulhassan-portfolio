@@ -227,7 +227,7 @@ class EducationCertificationSection extends StatelessWidget {
         'issuer': 'HackerRank',
         'date': '2025',
         'credentialId': '',
-        'url': 'https://drive.google.com/file/d/YOUR_HACKERRANK_CERT_ID/view',
+        'url': 'https://www.hackerrank.com/certificates/5d22001c29b2',
         'skills': [
           'Problem Solving',
           'Data Structures',

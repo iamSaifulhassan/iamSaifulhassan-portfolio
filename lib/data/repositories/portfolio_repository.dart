@@ -12,22 +12,16 @@ class PortfolioRepository {
   static List<Map<String, String>> getCertifications() {
     return [
       {
-        'name': 'Amazon AWS',
-        'icon': 'FontAwesomeIcons.aws',
-        'certificateUrl':
-            'https://drive.google.com/file/d/YOUR_AWS_CERT_ID/view', // Replace with your certificate link
-      },
-      {
         'name': 'Oracle',
         'icon': 'FontAwesomeIcons.oracle',
         'certificateUrl':
-            'https://drive.google.com/file/d/YOUR_ORACLE_CERT_ID/view',
+            'https://drive.google.com/file/d/1k0JdU-Xo6rSvsQa40AJpoKipWV_VwVil/view?usp=sharing',
       },
       {
         'name': 'Mindluster',
         'icon': 'Icons.school',
         'certificateUrl':
-            'https://drive.google.com/file/d/YOUR_MINDLUSTER_CERT_ID/view',
+            'https://drive.google.com/file/d/1Gc-x4Wmr6Z6z1t7g-pCKK8TZXHVPK468/view?usp=sharing',
       },
       {
         'name': 'Hackerrank',
@@ -39,13 +33,13 @@ class PortfolioRepository {
         'name': 'JP Morgan',
         'icon': 'FontAwesomeIcons.building',
         'certificateUrl':
-            'https://drive.google.com/file/d/YOUR_JPMORGAN_CERT_ID/view',
+            'https://drive.google.com/file/d/1fhHVSdLPrgSk9wO68B7fVZLArSHlRnTJ/view?usp=sharing',
       },
       {
         'name': 'EA Sports',
         'icon': 'FontAwesomeIcons.gamepad',
         'certificateUrl':
-            'https://drive.google.com/file/d/YOUR_EA_CERT_ID/view',
+            'https://drive.google.com/file/d/1ZvVbMsB6tXjSP7k4h2pXMK6BMW_7LhPr/view?usp=sharing',
       },
     ];
   }
