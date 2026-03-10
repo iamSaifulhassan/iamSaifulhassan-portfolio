@@ -167,9 +167,9 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildImageContent({bool isMobile = false}) {
-    // Responsive sizing logic
-    final double imageSize = isMobile ? 260.0 : 350.0;
-    final double borderWidth = isMobile ? 6.0 : 8.0;
+    final double imageSize = isMobile ? 240.0 : 320.0;
+    final double borderWidth = isMobile ? 5.0 : 7.0;
+    final double photoSize = imageSize - (borderWidth * 2);
 
     return FadeInRight(
       duration: const Duration(milliseconds: 800),
@@ -177,13 +177,11 @@ class HeroSection extends StatelessWidget {
       child: Container(
         width: imageSize,
         height: imageSize,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           gradient: const LinearGradient(
-            colors: [
-              Color(0xFF2196F3), // Blue
-              Color(0xFF00BCD4), // Cyan
-            ],
+            colors: [Color(0xFF2196F3), Color(0xFF00BCD4)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -195,41 +193,23 @@ class HeroSection extends StatelessWidget {
             ),
           ],
         ),
-        child: Padding(
-          padding: EdgeInsets.all(borderWidth),
-          child: Container(
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppTheme.backgroundColor, // Match background to avoid white edges
-            ),
-            child: ClipOval(
-              child: SizedBox(
-                width: imageSize - (borderWidth * 2),
-                height: imageSize - (borderWidth * 2),
-                child: Image.asset(
-                  'assets/images/profileimg.png',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(0xFF1E88E5), // Blue
-                            Color(0xFF00BCD4), // Cyan
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.person,
-                        size: 150,
-                        color: Colors.white,
-                      ),
-                    );
-                  },
+        child: Container(
+          width: photoSize,
+          height: photoSize,
+          clipBehavior: Clip.hardEdge,
+          decoration: const BoxDecoration(shape: BoxShape.circle),
+          child: Image.asset(
+            'assets/images/profileimg.png',
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) => Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Color(0xFF1E88E5), Color(0xFF00BCD4)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
+              child: const Icon(Icons.person, size: 120, color: Colors.white),
             ),
           ),
         ),
