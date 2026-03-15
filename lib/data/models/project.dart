@@ -8,6 +8,7 @@ class Project {
   final List<String> screenshots;
   final String? youtubeVideoId;
   final String? downloadUrl;
+  final String? liveUrl;
   final String category;
   final bool isFeatured;
 
@@ -22,6 +23,7 @@ class Project {
     this.screenshots = const [],
     this.youtubeVideoId,
     this.downloadUrl,
+    this.liveUrl,
     this.isFeatured = false,
   });
 
@@ -42,6 +44,7 @@ class Project {
       imageUrl: json['imageUrl'],
       youtubeVideoId: json['youtubeVideoId'],
       downloadUrl: json['downloadUrl'],
+      liveUrl: json['liveUrl'],
       isFeatured: json['isFeatured'] ?? false,
     );
   }
@@ -58,6 +61,7 @@ class Project {
       'imageUrl': imageUrl,
       'youtubeVideoId': youtubeVideoId,
       'downloadUrl': downloadUrl,
+      'liveUrl': liveUrl,
       'isFeatured': isFeatured,
     };
   }

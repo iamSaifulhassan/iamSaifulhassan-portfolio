@@ -141,9 +141,8 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
 
                               const SizedBox(height: 40),
 
-                              // Download button
-                              if (widget.project.downloadUrl != null)
-                                _buildDownloadButton(),
+                              // Action buttons (Live and/or Download)
+                              _buildActionButtons(),
                             ],
                           ),
                         ),
@@ -480,36 +479,69 @@ class _ProjectDetailPopupState extends State<ProjectDetailPopup> {
     );
   }
 
-  Widget _buildDownloadButton() {
-    final url = widget.project.downloadUrl!;
-    final isGitHub = url.contains('github.com');
-    final isFigma = url.contains('figma.com');
+  Widget _buildActionButtons() {
+    final liveUrl = widget.project.liveUrl;
+    final downloadUrl = widget.project.downloadUrl;
 
-    final IconData icon = isGitHub
-        ? Icons.code
-        : isFigma
-            ? Icons.design_services
-            : Icons.download;
+    if (liveUrl == null && downloadUrl == null) return const SizedBox.shrink();
 
-    final String label = isGitHub
-        ? 'View on GitHub'
-        : isFigma
-            ? 'View on Figma'
-            : 'Download App';
+    return Column(
+      children: [
+        if (liveUrl != null) ...[
+          _buildActionButton(
+            label: 'View Live',
+            icon: Icons.rocket_launch,
+            url: liveUrl,
+            isPrimary: true,
+          ),
+          if (downloadUrl != null) const SizedBox(height: 16),
+        ],
+        if (downloadUrl != null)
+          _buildActionButton(
+            label: _getDownloadLabel(downloadUrl),
+            icon: _getDownloadIcon(downloadUrl),
+            url: downloadUrl,
+            isPrimary: liveUrl == null,
+          ),
+      ],
+    );
+  }
 
+  String _getDownloadLabel(String url) {
+    if (url.contains('figma.com')) return 'View on Figma';
+    return 'Download';
+  }
+
+  IconData _getDownloadIcon(String url) {
+    if (url.contains('figma.com')) return Icons.design_services;
+    return Icons.folder_open;
+  }
+
+  Widget _buildActionButton({
+    required String label,
+    required IconData icon,
+    required String url,
+    required bool isPrimary,
+  }) {
     return Container(
       width: double.infinity,
       height: 56,
       decoration: BoxDecoration(
-        gradient: AppTheme.primaryGradient,
+        gradient: isPrimary ? AppTheme.primaryGradient : null,
+        color: isPrimary ? null : Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.primaryColor.withOpacity(0.4),
-            blurRadius: 12,
-            offset: const Offset(0, 6),
-          ),
-        ],
+        border: isPrimary
+            ? null
+            : Border.all(color: Colors.white.withOpacity(0.3)),
+        boxShadow: isPrimary
+            ? [
+                BoxShadow(
+                  color: AppTheme.primaryColor.withOpacity(0.4),
+                  blurRadius: 12,
+                  offset: const Offset(0, 6),
+                ),
+              ]
+            : null,
       ),
       child: ElevatedButton.icon(
         onPressed: () => _launchURL(url),

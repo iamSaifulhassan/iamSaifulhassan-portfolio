@@ -408,8 +408,9 @@ class _ImmersiveProjectCardState extends State<_ImmersiveProjectCard> {
                       // Action Buttons
                       Row(
                         children: [
-                          // Download button (shown if downloadUrl exists)
-                          if (widget.project.downloadUrl != null)
+                          // Action button (prioritize View Live if liveUrl exists, otherwise Download/Figma)
+                          if (widget.project.liveUrl != null ||
+                              widget.project.downloadUrl != null)
                             Expanded(
                               child: Container(
                                 height: 44,
@@ -426,8 +427,9 @@ class _ImmersiveProjectCardState extends State<_ImmersiveProjectCard> {
                                   ],
                                 ),
                                 child: ElevatedButton(
-                                  onPressed: () =>
-                                      _launchURL(widget.project.downloadUrl!),
+                                  onPressed: () => _launchURL(
+                                      widget.project.liveUrl ??
+                                          widget.project.downloadUrl!),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.transparent,
                                     shadowColor: Colors.transparent,
@@ -438,6 +440,15 @@ class _ImmersiveProjectCardState extends State<_ImmersiveProjectCard> {
                                   ),
                                   child: Builder(
                                     builder: (_) {
+                                      if (widget.project.liveUrl != null) {
+                                        return const Text(
+                                          'View Live',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        );
+                                      }
                                       final url = widget.project.downloadUrl!;
                                       final label = url.contains('figma.com')
                                           ? 'View on Figma'
@@ -454,7 +465,8 @@ class _ImmersiveProjectCardState extends State<_ImmersiveProjectCard> {
                                 ),
                               ),
                             ),
-                          if (widget.project.downloadUrl != null)
+                          if (widget.project.liveUrl != null ||
+                              widget.project.downloadUrl != null)
                             const SizedBox(width: 12),
                           // Read More button (always shown)
                           Expanded(

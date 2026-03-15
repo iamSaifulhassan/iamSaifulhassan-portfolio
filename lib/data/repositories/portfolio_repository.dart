@@ -287,7 +287,7 @@ class PortfolioRepository {
 
       // ── 6. AI Face Shape Detection ────────────────────────────────────────
       Project(
-        title: 'AI Face Shape Detection - 83% Accuracy',
+        title: 'AI Face Shape Detection - 73.1% Accuracy',
         description:
             'End-to-end AI system that analyzes facial geometry from a single photo and delivers personalized hairstyle, beard, glasses.',
         longDescription:
@@ -330,10 +330,55 @@ class PortfolioRepository {
         category: 'AI',
         isFeatured: true,
         imageUrl: 'assets/images/projects/aiface.png',
+        liveUrl:
+            'https://aiface-shape-detection-and-classification.onrender.com/',
         screenshots: [],
         youtubeVideoId: null,
         downloadUrl:
             'https://drive.google.com/file/d/1ud1OQmddRMahrnyHIz4UvjgkVdv5-pyh/view?usp=sharing',
+      ),
+
+      // ── 7. AI Restaurant Recommender ───────────────────────────────────────────
+      Project(
+        title: 'AI Restaurant Recommender',
+        description:
+            'A sophisticated restaurant recommendation engine powered by Prolog for intelligent logic and Flask for the web interface.',
+        longDescription:
+            'AI Restaurant Recommender System (Prolog-based) 🍴🧠\n\n'
+            'A sophisticated restaurant recommendation engine powered by Prolog for intelligent logic and Flask for the web interface. This system uses facts and rules to provide highly relevant restaurant suggestions based on cuisine, location, price, and dietary needs.\n\n'
+            '🌟 Key Features\n'
+            '• Intelligent Logic: Powered by SWI-Prolog facts and inference rules.\n'
+            '• Massive Database: Includes over 500+ restaurants with diverse attributes.\n'
+            '• Multi-Filter Search: Search by Cuisine, Location, Price Point, and Dietary Preferences (Halal, Vegetarian, Vegan, Gluten-Free).\n'
+            '• Responsive UI: A modern, premium web interface for browsing recommendations.\n'
+            '• Dockerized: Ready for easy deployment on platforms like Render or Heroku.\n\n'
+            '🛠️ Tech Stack\n'
+            '• Logic Engine: SWI-Prolog\n'
+            '• Backend: Python, Flask\n'
+            '• Bridge: PySwip\n'
+            '• Deployment: Docker, Gunicorn',
+        technologies: [
+          'Python',
+          'SWI-Prolog',
+          'Flask',
+          'PySwip',
+          'Vanilla JS',
+          'Docker',
+          'Gunicorn',
+        ],
+        features: [
+          'Intelligent logic powered by SWI-Prolog facts and inference rules',
+          'Massive database of 500+ restaurants',
+          'Multi-filter search (Cuisine, Location, Price, Dietary)',
+          'Modern, premium responsive web interface',
+          'Dockerized and ready for cloud deployment',
+        ],
+        category: 'AI',
+        isFeatured: true,
+        imageUrl: 'assets/images/projects/restaurantrecommender.png',
+        liveUrl: 'https://ai-restaurant-recommender-system.onrender.com/',
+        downloadUrl:
+            'https://drive.google.com/file/d/1feGfpO6ZRPX_G7RHtU36Bt4IYBaC5ePJ/view?usp=sharing',
       ),
     ];
   }
