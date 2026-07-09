@@ -85390,7 +85390,7 @@ CU(a){return this.a5I(a)},
 a5I(a){var s=0,r=A.K(t.H),q
 var $async$CU=A.L(function(b,c){if(b===1)return A.H(c,r)
 while(true)switch(s){case 0:q=document.createElement("a")
-q.href="assets/files/saifulhassan_cv.pdf"
+q.href="assets/assets/files/saifulhassan_cv.pdf"
 q.setAttribute("download","saifulhassan_cv.pdf")
 q.click()
 return A.I(null,r)}})
