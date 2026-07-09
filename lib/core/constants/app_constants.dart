@@ -15,7 +15,8 @@ efficient code and stunning user interfaces.''';
   static const String linkedIn = 'https://linkedin.com/in/iamsaifulhassan';
   static const String github = 'https://github.com/iamsaifulhassan';
   static const String website = 'https://iamsaifulhassan.github.io';
-  static const String cvUrl = 'assets/files/saifulhassan_cv.pdf';
+  // Point to the path emitted into the web build (assets/assets/files/...)
+  static const String cvUrl = 'assets/assets/files/saifulhassan_cv.pdf';
 
   // Social Media
   static const String twitter = 'https://twitter.com/iamsaifulhassan';
