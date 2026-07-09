@@ -10,7 +10,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "eaf61be61e748067aed30365a473a737
 "assets/assets/images/jpmorgan.png": "b78acdbc757b88800a5af239ebdf9e8f",
 "assets/assets/images/Mindluster.png": "f8f7fda978c3082e48357316b392b0b1",
 "assets/assets/images/oracle.png": "711beff870b5572676ab07edf4cf0aca",
-"assets/assets/images/Profile.jpg": "10fdc540f4bae0782adb34cf455763ee",
+"assets/assets/images/Profile.png": "10fdc540f4bae0782adb34cf455763ee",
 "assets/assets/images/README.md": "133195fa82d275cd7fe4a60f3ec71f23",
 "assets/assets/images/tech/androidstudio.svg": "3ff58371b0c53cb2f7d238415fea97f5",
 "assets/assets/images/tech/bloc.svg": "d2da19545b715e67c4b36eb51b366c67",

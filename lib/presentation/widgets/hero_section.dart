@@ -57,13 +57,16 @@ class HeroSection extends StatelessWidget {
   Widget _buildDesktopLayout(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          flex: 2,
-          child: _buildTextContent(context, isDesktop: true),
-        ),
+        Expanded(flex: 2, child: _buildTextContent(context, isDesktop: true)),
         const SizedBox(width: 50),
         Expanded(
-          child: _buildImageContent(),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Transform.translate(
+              offset: const Offset(24, -10),
+              child: _buildImageContent(),
+            ),
+          ),
         ),
       ],
     );
@@ -83,8 +86,11 @@ class HeroSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTextContent(BuildContext context,
-      {required bool isDesktop, bool isMobile = false}) {
+  Widget _buildTextContent(
+    BuildContext context, {
+    required bool isDesktop,
+    bool isMobile = false,
+  }) {
     return Column(
       crossAxisAlignment:
           isDesktop ? CrossAxisAlignment.start : CrossAxisAlignment.center,
@@ -144,14 +150,9 @@ class HeroSection extends StatelessWidget {
                 isPrimary: true,
               ),
               const SizedBox(width: 20),
-              _buildActionButton(
-                'View Work',
-                Icons.work,
-                () {
-                  ScrollToSectionNotification('projects').dispatch(context);
-                },
-                isPrimary: false,
-              ),
+              _buildActionButton('View Work', Icons.work, () {
+                ScrollToSectionNotification('projects').dispatch(context);
+              }, isPrimary: false),
             ],
           ),
         ),
@@ -199,7 +200,7 @@ class HeroSection extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           decoration: const BoxDecoration(shape: BoxShape.circle),
           child: Image.asset(
-            'assets/images/profileimg.png',
+            'assets/images/profile.jpg',
             fit: BoxFit.cover,
             errorBuilder: (context, error, stackTrace) => Container(
               decoration: const BoxDecoration(
@@ -233,9 +234,7 @@ class HeroSection extends StatelessWidget {
         side:
             isPrimary ? null : const BorderSide(color: Colors.white, width: 2),
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
     );
   }
@@ -244,32 +243,34 @@ class HeroSection extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildSocialButton(
-          Icons.email,
-          () {
-            const email = AppConstants.email;
-            final subject = Uri.encodeComponent('Contact from Portfolio');
-            final body = Uri.encodeComponent(
-                'Hi Saiful,\n\nI would like to get in touch with you.');
-            final mailtoUrl = 'mailto:$email?subject=$subject&body=$body';
-            if (kIsWeb) {
-              // Use both location.assign and location.href for maximum compatibility
-              try {
-                html.window.location.assign(mailtoUrl);
-              } catch (e) {
-                html.window.location.href = mailtoUrl;
-              }
-            } else {
-              _launchURL(mailtoUrl);
+        _buildSocialButton(Icons.email, () {
+          const email = AppConstants.email;
+          final subject = Uri.encodeComponent('Contact from Portfolio');
+          final body = Uri.encodeComponent(
+            'Hi Saiful,\n\nI would like to get in touch with you.',
+          );
+          final mailtoUrl = 'mailto:$email?subject=$subject&body=$body';
+          if (kIsWeb) {
+            // Use both location.assign and location.href for maximum compatibility
+            try {
+              html.window.location.assign(mailtoUrl);
+            } catch (e) {
+              html.window.location.href = mailtoUrl;
             }
-          },
+          } else {
+            _launchURL(mailtoUrl);
+          }
+        }),
+        const SizedBox(width: 20),
+        _buildSocialButton(
+          FontAwesomeIcons.github,
+          () => _launchURL(AppConstants.github),
         ),
         const SizedBox(width: 20),
         _buildSocialButton(
-            FontAwesomeIcons.github, () => _launchURL(AppConstants.github)),
-        const SizedBox(width: 20),
-        _buildSocialButton(
-            FontAwesomeIcons.linkedin, () => _launchURL(AppConstants.linkedIn)),
+          FontAwesomeIcons.linkedin,
+          () => _launchURL(AppConstants.linkedIn),
+        ),
       ],
     );
   }
@@ -338,14 +339,16 @@ class HeroSection extends StatelessWidget {
       // On mobile, show PDF using a viewer package (not implemented here)
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text('Opening CV... (PDF viewer not implemented)')),
+          content: Text('Opening CV... (PDF viewer not implemented)'),
+        ),
       );
       // You can use a package like open_file or pdfx for real implementation
     } else {
       // On desktop, open the PDF asset (not implemented)
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-            content: Text('Download not supported on this platform.')),
+          content: Text('Download not supported on this platform.'),
+        ),
       );
     }
   }

@@ -534,7 +534,7 @@ class PortfolioRepository {
         degree: 'Bachelor of Science in Software Engineering',
         field: 'Software Engineering',
         duration: '2022 - Present',
-        grade: 'CGPA: 3.55/4.00',
+        grade: 'CGPA: 3.70/4.00',
         description:
             'Specialized in Software Engineering and Mobile Application Development',
       ),

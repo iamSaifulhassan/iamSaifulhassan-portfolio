@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'core/themes/app_theme.dart';
 import 'presentation/pages/portfolio_page.dart';
-
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   try {
-    await dotenv.load(fileName: ".env");
-  } catch (e) {
-    debugPrint("Warning: Could not load .env file: $e");
+    final env = await rootBundle.loadString('.env');
+    debugPrint(env); // Temporary test
+
+    await dotenv.load(fileName: '.env');
+    debugPrint("Loaded .env successfully");
+  } catch (e, st) {
+    debugPrint("Error loading .env: $e");
+    debugPrintStack(stackTrace: st);
   }
+
   runApp(const MyPortfolioApp());
 }
 
