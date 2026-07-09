@@ -330,10 +330,16 @@ class HeroSection extends StatelessWidget {
   void _downloadCV(BuildContext context) async {
     const cvAsset = AppConstants.cvUrl;
     if (kIsWeb) {
-      // For web, trigger browser download
-      html.AnchorElement(href: cvAsset)
-        ..setAttribute('download', 'saifulhassan_cv.pdf')
-        ..click();
+      // For web, open the PDF in a new tab/window so the browser handles download/viewing.
+      // This avoids issues where the service worker or download attribute blocks scripted downloads.
+      try {
+        html.window.open(cvAsset, '_blank');
+      } catch (_) {
+        // Fallback to anchor download if window.open fails
+        html.AnchorElement(href: cvAsset)
+          ..setAttribute('download', 'saifulhassan_cv.pdf')
+          ..click();
+      }
     } else if (Theme.of(context).platform == TargetPlatform.android ||
         Theme.of(context).platform == TargetPlatform.iOS) {
       // On mobile, show PDF using a viewer package (not implemented here)
