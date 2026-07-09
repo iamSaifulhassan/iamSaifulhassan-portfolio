@@ -32,6 +32,7 @@ flutter:
     - docs/assets/
     - assets/images/
     - assets/images/projects/
+    - assets/images/projects/Groomio/
     - assets/images/projects/histomeet.png
     - assets/images/projects/laptop_mockup.png
     - assets/images/projects/book_read.png

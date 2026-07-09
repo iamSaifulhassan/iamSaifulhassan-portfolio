@@ -11,6 +11,7 @@ class Project {
   final String? liveUrl;
   final String category;
   final bool isFeatured;
+  final String fit;
 
   Project({
     required this.title,
@@ -25,6 +26,7 @@ class Project {
     this.downloadUrl,
     this.liveUrl,
     this.isFeatured = false,
+    this.fit = 'cover',
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {
@@ -46,6 +48,7 @@ class Project {
       downloadUrl: json['downloadUrl'],
       liveUrl: json['liveUrl'],
       isFeatured: json['isFeatured'] ?? false,
+      fit: json['fit'] ?? 'cover',
     );
   }
 
@@ -63,6 +66,7 @@ class Project {
       'downloadUrl': downloadUrl,
       'liveUrl': liveUrl,
       'isFeatured': isFeatured,
+      'fit': fit,
     };
   }
 }

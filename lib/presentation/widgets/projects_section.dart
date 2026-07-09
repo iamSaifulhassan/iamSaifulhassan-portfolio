@@ -267,26 +267,35 @@ class _ImmersiveProjectCardState extends State<_ImmersiveProjectCard> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                // Background Image with Zoom Effect
-                AnimatedScale(
-                  scale: isHovered ? 1.05 : 1.0,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeOutCubic,
-                  child: widget.project.imageUrl != null
-                      ? Image.asset(
-                          widget.project.imageUrl!,
-                          fit: BoxFit.cover,
-                        )
-                      : Container(
-                          color: AppTheme.cardColor,
-                          child: Center(
-                            child: Icon(
-                              Icons.laptop_mac,
-                              size: 80,
-                              color: Colors.white.withOpacity(0.2),
+                // Background Image with Zoom/Contain Effect
+                Container(
+                  color: widget.project.fit == 'contain'
+                      ? const Color(0xFF0A0A0A)
+                      : Colors.transparent,
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: AnimatedScale(
+                    scale: isHovered ? 1.05 : 1.0,
+                    duration: const Duration(milliseconds: 400),
+                    curve: Curves.easeOutCubic,
+                    child: widget.project.imageUrl != null
+                        ? Image.asset(
+                            widget.project.imageUrl!,
+                            fit: widget.project.fit == 'contain'
+                                ? BoxFit.contain
+                                : BoxFit.cover,
+                          )
+                        : Container(
+                            color: AppTheme.cardColor,
+                            child: Center(
+                              child: Icon(
+                                Icons.laptop_mac,
+                                size: 80,
+                                color: Colors.white.withOpacity(0.2),
+                              ),
                             ),
                           ),
-                        ),
+                  ),
                 ),
 
                 // Gradient Overlay

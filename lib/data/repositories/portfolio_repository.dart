@@ -5,7 +5,7 @@ import '../models/education.dart';
 
 class PortfolioRepository {
   // Portfolio Stats
-  static const int projectsCompleted = 10;
+  static const int projectsCompleted = 11;
   static const int skillsLearned = 15;
 
   // Certifications with logos and links
@@ -47,6 +47,67 @@ class PortfolioRepository {
   // Sample Projects Data
   static List<Project> getProjects() {
     return [
+      // ── 1. Groomio ───────────────────────────────────────────────────────
+      Project(
+        title: 'Groomio - Barber Booking & Salon Management',
+        description:
+            'Cross-platform mobile barber booking and salon management platform with AI-powered grooming recommendations.',
+        longDescription:
+            'Groomio is a mobile-based Barber booking platform with salon management designed to modernize grooming services across the hair styling industry. The system connects customers with barbers, salons, and freelance grooming professionals through a unified application.\n\n'
+            'Smart AI Recommendations\n'
+            'Includes a smart AI-powered grooming recommendation module that analyzes the customer\'s face shape and suggests suitable hairstyles tailored specifically to them.\n\n'
+            'Booking & Discovery\n'
+            'Enables users to browse nearby barbers, explore service menus, view ratings, compare prices, and book appointments with ease, significantly reducing waiting times.\n\n'
+            'Salon Management Dashboard\n'
+            'Supports local salons and barbers in their digital transformation by providing powerful tools for appointment scheduling, team management, and earnings tracking under a single app.',
+        technologies: [
+          'Flutter',
+          'Dart',
+          'PostgreSQL',
+          'Supabase',
+          'Node JS',
+          'CloudFlare R2 Image Storage',
+          'Firebase Push Notifications',
+          'Google Maps API',
+          'Microservices Architecture',
+          'Prompt Engineering',
+          'Open AI Images API',
+          'REST API',
+          'BLoC',
+          'JSON Web Token (JWT)',
+          'Digital Ocean Droplets',
+          'Secure File Management',
+          'Material Design 3',
+          'Safe Fallback',
+          'Redis',
+          'API Gateway'
+        ],
+        features: [
+          'Unified Barber & Salon Search with Google Maps location discovery',
+          'Smart AI recommendation module analyzing face shape for hairstyles',
+          'Real-time appointment scheduling and booking calendar',
+          'Service menu exploration, price comparison, and rating reviews',
+          'In-app chat between customers and grooming professionals',
+          'Salon dashboard: Team management, service scheduling, and earnings tracking',
+          'Secure Firebase authentication and cloud profile synchronization',
+          'Cross-platform compatibility for iOS and Android',
+        ],
+        category: 'Mobile App',
+        isFeatured: true,
+        fit: 'contain',
+        imageUrl: 'assets/images/projects/Groomio/Untitled design (2) (1).png',
+        screenshots: [
+          'assets/images/projects/Groomio/AI Face Shape.jpg',
+          'assets/images/projects/Groomio/Appointment booking and selecting barber.jpg',
+          'assets/images/projects/Groomio/Appointment time.jpg',
+          'assets/images/projects/Groomio/Booking Details and Chat.jpg',
+          'assets/images/projects/Groomio/Manage your team and track earnings.jpg',
+          'assets/images/projects/Groomio/Setting up the store location.jpg',
+        ],
+        youtubeVideoId: 'aI3ka8JF9nI',
+        downloadUrl: 'https://github.com/iamSaifulhassan/Groomio',
+      ),
+
       // ── 1. BookRead ──────────────────────────────────────────────────────
       Project(
         title: 'BookRead - PDF Reading App',
